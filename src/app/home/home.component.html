@@ -1,0 +1,61 @@
+<div class="main">
+<h1>Wynajmij auto w największej wypożyczalni samochodów w Polsce</h1>
+
+<div class="forme">
+    <form [formGroup]="dane" class="row g-3">
+        <div class="row g-3 justify-content-center">
+        <div class="col-md-3">
+                <label for="exampleDataList" class="col-form-label">Wybierz Miasto</label>
+<input formControlName="city" class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Miasto...">
+<datalist id="datalistOptions">
+  <option *ngFor="let c of Cities" [value]="c" >
+
+</datalist>
+            </div>
+            <!-- <div class="col-md-2">
+                <label for="example-date-input" class="col-2 col-form-label">Początek</label>
+                <input class="form-control" type="date" value="2021-01-01" id="example-date-input">
+            </div>
+            <div class="col-md-2">
+                <label for="example-date-input" class="col-2 col-form-label">Koniec</label>
+                <input class="form-control" type="date" value="2021-12-31" id="example-date-input">
+            </div> -->
+        </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-secondary mb-3" (click)="searchbyfilter()">Sprawdz</button>
+      </div>
+      </form>
+</div>
+
+
+</div>
+
+<h1 class="display-3 p-0 text-center">Co nas wyróżnia</h1>
+
+<div class="row m-0">
+    <div class="col-md-4 text-center">
+        
+            <img src="../assets/laptop-icon.png"/>
+            <div class="card-body">
+                <p class="card-text">bezpłatna rezerwacja online,<br> bez konieczności podwania danych karty</p>
+            </div>
+           
+    </div>
+    <div class="col-md-4 text-center">
+        
+        <img src="../assets/car-icon.png"/>
+        <div class="card-body">
+            <p class="card-text">nowe i bezpieczne samochody</p>
+        </div>
+       
+</div>
+<div class="col-md-4 text-center">
+        
+    <img src="../assets/list-icon.png"/>
+    <div class="card-body">
+        <p class="card-text">szeroki wybór opcji dodatkowych<br>dopasowanych do celu podróży</p>
+    </div>
+   
+</div>
+</div>
+

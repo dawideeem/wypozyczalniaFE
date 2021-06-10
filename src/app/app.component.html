@@ -1,0 +1,52 @@
+<div class="heightcontainer">
+<nav class="navbar navbar-light navbar-expand-md" style="background-color: #e3f2fd;" >
+    
+    <a class="navbar-brand" href="#"><img src="../assets/logo.png" width="60" height="60" alt="" class="d-inline-block mr-1">CarExpress</a>
+   
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon">
+       </span>
+   </button>
+<div class="collapse navbar-collapse" id="mainmenu">
+<ul class="navbar-nav">
+<li class="nav-item">
+<a class="nav-link" routerLink="/home" routerLinkActive="active">Rezerwuj Auto</a>
+</li>
+<li class="nav-item">
+        <a class="nav-link" href="/cars">Samochody i Cenniki</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/kontakt">Skontaktuj się z nami</a>
+            </li>
+            <li class="nav-item" *ngIf="isEnable">
+              <a class="nav-link" href="/admin">Panel Administratora</a>
+              </li>
+
+</ul>
+</div>
+<div class="user-and-item justify-content-end py-0 p-4">
+  <div class="navbar-items">
+<a class="nav-link-user" aria-current="page" (click)="toRegister()" [routerLink]="['register']"
+          title="Zaloguj się lub utwórz konto" *ngIf="!isLoggedUser">
+          <i class="far fa-user"></i>
+        </a>
+        <a class="nav-link-user" aria-current="page" *ngIf="isLoggedUser" title="Wyloguj" (click)="logOut()">
+          <i class="fas fa-sign-in-alt"></i>
+        </a>
+      </div>
+    </div>
+</nav>
+
+<router-outlet></router-outlet>
+
+  <footer>
+    <div class="container">
+        <div class="text-center py-4">
+              Dawid Milewski
+        </div>
+      <div class="row text-center">
+        <p class="cpy">Projekt KCK &copy;</p>
+      </div>
+      </div>
+  </footer>
+</div>

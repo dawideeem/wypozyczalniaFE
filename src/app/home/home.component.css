@@ -1,0 +1,15 @@
+.main{
+    height: 40%; 
+    background-image: url("../../assets/form1.jpg");
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    color: white;
+    padding-bottom: 0;
+}
+h1{
+    padding-top: 10%;
+}
+form{
+    max-width: 100%;
+}

@@ -1,0 +1,30 @@
+<h1 class="display-6 text-center">Lista aktualnych Samochodów</h1>
+<table class="table text-center">
+    <thead>
+      <tr>
+        <th scope="col">Nazwa Pizzy</th>
+        <th scope="col">Miasto</th>
+        <th scope="col">Skrzynia Biegów</th>
+        <th scope="col">Liczba Drzwi</th>
+        <th scope="col">Paliwo</th>
+        <th scope="col">Ilość Miejsc</th>
+        <th scope="col">Klimatyzacja</th>
+        <th scope="col">Cena</th>
+        <th scope="col">Opcje</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let car of cars">
+      <tr>
+        <td>{{car.name}}</td>
+        <td>{{car.city}}</td>
+        <td>{{car.gearbox}}</td>
+        <td>{{car.doors}}</td>
+        <td>{{car.fuel}}</td>
+        <td>{{car.people}}</td>
+        <td>{{car.condition}}</td>
+        <td>{{car.price}}</td>
+        <td> <button type="button" class="btn btn-dark mx-3" (click)="getCarId(car.id)" routerLink="/admin/edit">Edytuj</button>
+          <button type="button" (click)="delete(car.id)" class="btn btn-danger">Usuń</button></td>
+      </tr>
+    </tbody>
+  </table>

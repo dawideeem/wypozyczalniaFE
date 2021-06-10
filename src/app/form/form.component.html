@@ -1,0 +1,160 @@
+<div class="row m-0">
+<div class="card mb-4 shadow-sm m-4 col-md-3 h-50">
+    <img class="bd-placeholder-img card-img-top p-2" [src]=cars?.imageUrl/>
+  
+    <div class="card-body">
+        <p class="card-text text-center"><strong>{{cars?.name}}</strong></p>
+      <div style="padding-top: 15px;" class="car-type-descr col-xs-12">
+      <div class="car-type-descr col-xs-12">
+        <div class="car-type-descr-inside col-xs-12">
+          <div class="car-type-descr-inside-ul">
+            <table class="car-feature-table mx-auto">
+              <tbody>
+                <tr class="titles-table-row p-4">
+                  <td style="text-align: center;" class="p-2">
+                  <div>
+                    <img style="max-width: 40px;" alt="skrzynia manualna" src="https://kaizenrent.pl/images/car-manual-icon.png">
+                  </div>
+                  </td>
+                  <td>
+                  <div class="car-feature-text">
+                    <span>{{cars?.gearbox}}</span>
+                  </div>
+                </td>
+                <td style="text-align: center;"class="p-2">
+                  <div>
+                    <img style="max-width: 40px;" alt="skrzynia manualna" src="https://kaizenrent.pl/images/other-icon-1.png">
+                  </div>
+                  </td>
+                  <td>
+                  <div class="car-feature-text">
+                    <span>{{cars?.doors}}</span>
+                  </div>
+                </td>
+                </tr>
+                <tr class="titles-table-row">
+                  <td style="text-align: center;"class="p-2">
+                  <div>
+                    <img style="max-width: 40px;" alt="skrzynia manualna" src="https://kaizenrent.pl/images/other-icon-2.png">
+                  </div>
+                  </td>
+                  <td>
+                  <div class="car-feature-text">
+                    <span>{{cars?.fuel}}</span>
+                  </div>
+                </td>
+                <td style="text-align: center;"class="p-2">
+                  <div>
+                    <img style="max-width: 40px;" alt="skrzynia manualna" src="https://kaizenrent.pl/images/other-icon-3.png">
+                  </div>
+                  </td>
+                  <td>
+                  <div class="car-feature-text">
+                    <span>{{cars?.people}}</span>
+                  </div>
+                </td>
+                </tr>
+                <tr class="titles-table-row">
+                  <td style="text-align: center;"class="p-2">
+                  <div>
+                    <img style="max-width: 40px;" alt="skrzynia manualna" src="https://kaizenrent.pl/images/car-snowflake-icon.png">
+                  </div>
+                  </td>
+                  <td>
+                  <div class="car-feature-text">
+                    <span>{{cars?.condition}}</span>
+                  </div>
+                </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="btn-group">
+          
+        </div>
+        <p class="card-text"><strong>{{ cars?.price | currency: 'PLN'}} / <small>doba</small></strong></p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col">
+<h1 class="display-4">Wypełnij swoje dane</h1>
+<form>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputName">Imię</label>
+      <input type="email" class="form-control" id="inputEmail4">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Nazwisko</label>
+      <input type="password" class="form-control" id="inputPassword4">
+    </div>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="inputAddress">Ulica</label>
+    <input type="text" class="form-control" id="inputAddress">
+  </div>
+  <div class="form-group col-md-6">
+    <label for="inputAddress2">Numer domu/mieszkania</label>
+    <input type="text" class="form-control" id="inputAddress2">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">Miasto</label>
+      <input type="text" class="form-control" id="inputCity">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputState">Województwo</label>
+      <input type="text" class="form-control" id="inputCity">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputZip">Pesel</label>
+      <input type="text" class="form-control" >
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputZip">Numer Dowodu</label>
+      <input type="text" class="form-control" >
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputZip">Numer Telefonu</label>
+      <input type="text" class="form-control" >
+    </div>
+    <div class="col-md-6">
+      <label for="example-date-input" class="col-md-6 col-form-label">Początek</label>
+      <input class="form-control" type="date" value="2021-01-01" id="example-date-input">
+  </div>
+  <div class="col-md-6">
+      <label for="example-date-input" class="col-md-6 col-form-label">Koniec</label>
+      <input class="form-control" type="date" value="2021-12-31" id="example-date-input">
+  </div>
+  <div class="col-md-6">
+    <label for="example-date-input" class="col-md-6 col-form-label">Miasto odbioru Samochodu</label>
+    <input class="form-control" type="text" placeholder="{{cars?.city}}" readonly>
+</div>
+  </div>
+  <button type="button" class="btn btn-secondary pull-right m-3" id="btnContactUs" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Wyślij wiadomość</button>
+</form>
+</div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Dziękujemy wybranie naszej wypozyczalni</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Potwierdzimy Państwa rezerwację najszybciej jak to możliwe.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

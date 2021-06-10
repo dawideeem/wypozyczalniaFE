@@ -1,0 +1,44 @@
+<div class="row p-0 m-0">
+    <div class="form-group m-3 col-md-2">
+        <p class="text-center p-0 m-0">Nazwa:</p>
+        <input type="text" class="form-control" placeholder="Wpisz nazwe" [(ngModel)]="searchTerm"/>
+    </div>
+    
+    <div class="form-group m-3 col-md-2">
+        <p class="text-center p-0 m-0">Cena maksymalna:</p>
+        <input type="number" class="form-control" placeholder="Wybierz cene" [(ngModel)]="searchPrice"/>
+    </div>
+    <div class="form-group m-3 col-md-2">
+        <p class="text-center p-0 m-0">Ilosc Miejsc:</p>
+        <select class="form-control" [(ngModel)]="searchPeople">
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+    </div>
+    <div class="form-group m-3 col-md-2">
+        <p class="text-center p-0 m-0">Paliwo:</p>
+        <select class="form-control" [(ngModel)]="searchFuel">
+            <option>Benzyna</option>
+            <option>Olej Napędowy</option>
+            <option>LPG</option>
+          </select>
+    </div>
+    <div class="form-group m-3 col-md-2">
+        <p class="text-center p-0 m-0">Klimatyzacja:</p>
+        <select class="form-control" [(ngModel)]="searchKlima">
+            <option>Klimatyzacja</option>
+            <option>Brak Klimatyzacji</option>
+          </select>
+    </div>
+    </div>
+    
+    
+    <div class="row mt-2 mb-2 m-0">
+        <div class="col-md-4" *ngFor="let car of cars|productFilter: searchTerm|cityFilter: searchCity|priceFilter: searchPrice|peopleFilter: searchPeople|fuelFilter: searchFuel|klimaFilter: searchKlima">
+    <app-product-item [productItem]="car"></app-product-item>
+        </div>
+    </div>
+    
+    

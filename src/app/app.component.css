@@ -1,0 +1,24 @@
+footer{
+    width: 100%;
+    background-color: #e3f2fd;
+    bottom: 0;
+    position: absolute;
+    min-height: 100px;
+}
+.footer-headline{
+    font-weight: 700;
+}
+
+.footer-rights{
+    width: 100%;
+    background-color: black;
+}
+
+.cpy{
+    font-size: .7rem;
+}
+.heightcontainer{
+    min-height: 100%;
+    position: relative;
+    padding-bottom: 100px;
+}
