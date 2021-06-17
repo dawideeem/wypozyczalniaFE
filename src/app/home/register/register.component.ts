@@ -42,7 +42,7 @@ export class RegisterComponent implements OnInit {
     };
     this.authService.register(registerData).subscribe(
       async () => {
-        this.router.navigate(['login']);
+        this.router.navigate(['login'])
         setTimeout(() => {
           this.onActive()
         })
