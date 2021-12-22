@@ -1,10 +1,11 @@
+<div style="min-height: 75vh;">
 <div class="main">
-<h1>Wynajmij auto w największej wypożyczalni samochodów w Polsce</h1>
+<h1 style="text-shadow: 2px 2px 4px #000000;">Wynajmij auto w największej wypożyczalni samochodów w Polsce</h1>
 
 <div class="forme">
     <form [formGroup]="dane" class="row g-3">
         <div class="row g-3 justify-content-center">
-        <div class="col-md-3">
+        <div class="col-sm-auto">
                 <label for="exampleDataList" class="col-form-label">Wybierz Miasto</label>
 <input formControlName="city" class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Miasto...">
 <datalist id="datalistOptions">
@@ -22,7 +23,7 @@
             </div> -->
         </div>
     <div class="col-12">
-        <button type="submit" class="btn btn-secondary mb-3" (click)="searchbyfilter()">Sprawdz</button>
+        <button type="submit" class="btn btn-dark mb-3" (click)="searchbyfilter()">Sprawdz</button>
       </div>
       </form>
 </div>
@@ -35,7 +36,7 @@
 <div class="row m-0">
     <div class="col-md-4 text-center">
         
-            <img src="../assets/laptop-icon.png"/>
+        <i class="fas fa-laptop fa-4x border rounded-circle p-3 border-top-0 border-start-0 border-end-0" style="box-shadow: 0px 1px 1px black; color: rgb(34, 99, 34)"></i>
             <div class="card-body">
                 <p class="card-text">bezpłatna rezerwacja online,<br> bez konieczności podwania danych karty</p>
             </div>
@@ -43,7 +44,7 @@
     </div>
     <div class="col-md-4 text-center">
         
-        <img src="../assets/car-icon.png"/>
+        <i class="fas fa-car fa-4x border rounded-circle p-3 border-top-0 border-start-0 border-end-0" style="box-shadow: 0px 1px 1px black; color: rgb(34, 99, 34)"></i>
         <div class="card-body">
             <p class="card-text">nowe i bezpieczne samochody</p>
         </div>
@@ -51,7 +52,7 @@
 </div>
 <div class="col-md-4 text-center">
         
-    <img src="../assets/list-icon.png"/>
+    <i class="fas fa-bars fa-4x border rounded-circle p-3 border-top-0 border-start-0 border-end-0" style="box-shadow: 0px 1px 1px black; color: rgb(34, 99, 34)"></i>
     <div class="card-body">
         <p class="card-text">szeroki wybór opcji dodatkowych<br>dopasowanych do celu podróży</p>
     </div>
@@ -59,3 +60,4 @@
 </div>
 </div>
 
+</div>

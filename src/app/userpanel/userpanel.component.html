@@ -1,0 +1,14 @@
+<div style="min-height: 75vh;">
+<h1 class="display-4 text-center">Witaj {{userData}} !</h1>
+<nav class="navbar navbar-light bg-light">
+  <form class="container-fluid justify-content-center">
+    <button class="btn btn-outline-success m-1 me-2" routerLink="edituser"><i class="fas fa-id-card"> Edytuj swoje Dane</i></button>
+    <button class="btn btn-outline-success m-1 me-2" routerLink="userrent"><i class="fas fa-wallet"> Twoje rezerwacje</i></button>
+    <button class="btn btn-outline-success m-1 me-2" routerLink="message"><i class="fas fa-envelope"> Twoje wiadomości</i></button>
+    <button class="btn btn-outline-success m-1 me-2" [routerLink]="['']">Wróć</button>
+  </form>
+
+</nav>
+
+<router-outlet></router-outlet>
+</div>

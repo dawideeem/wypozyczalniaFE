@@ -6,14 +6,14 @@ import { KontaktComponent } from './kontakt/kontakt.component';
 import { FormComponent } from './form/form.component';
 import { RegisterComponent } from './home/register/register.component';
 import { LoginComponent } from './home/login/login.component';
-import { AdminComponent } from './admin/admin.component'
 import { AuthGuard } from './guards/auth.guard';
 import { AuthAdminGuard } from './guards/auth-admin.guard';
+import {UserpanelComponent} from './userpanel/userpanel.component';
 
 const routes: Routes = [{path: 'home', component: HomeComponent},
                         {path: 'cars', component: CarsComponent},
                         {path: 'kontakt', component: KontaktComponent},
-                        {path: 'form', component: FormComponent},
+                        {path: 'form/:id', component: FormComponent},
                         {path: '', component: HomeComponent},
                         {path: 'register', component: RegisterComponent},
                         {path: 'login', component: LoginComponent},
@@ -21,6 +21,10 @@ const routes: Routes = [{path: 'home', component: HomeComponent},
                           path: 'admin', loadChildren: () =>
                             import('./admin/admin.module').then((m) => m.AdminModule), canActivate: [AuthGuard, AuthAdminGuard]
                         },
+                        {
+                          path: 'userpanel', loadChildren: () =>
+                        import('./userpanel/userpanel.module').then((m) => m.UserpanelModule), canActivate: [AuthGuard]
+                      },
                       ];
 
 @NgModule({

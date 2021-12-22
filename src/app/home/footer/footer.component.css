@@ -1,0 +1,7 @@
+.kontakt{
+    background-image: linear-gradient(rgba(0, 0, 0),rgba(0, 0, 0, 0.3)),url('../../../assets/world.png');    
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size:cover;
+
+}

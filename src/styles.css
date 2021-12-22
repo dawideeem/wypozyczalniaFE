@@ -4,3 +4,9 @@ body,html{
     padding: 0;
     margin: 0;
 }
+@import '~bootstrap/dist/css/bootsrtap.min.css';
+
+body::-webkit-scrollbar {
+    display: none;
+  }
+

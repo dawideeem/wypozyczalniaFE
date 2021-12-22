@@ -1,14 +1,26 @@
-<div class="row p-0 m-0">
-    <div class="form-group m-3 col-md-2">
+    <div class="row m-0 p-0">
+        <div class="col m-2">
+            <button class="btn btn-dark float-end" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2"  aria-expanded="false" aria-controls="multiCollapseExample2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+                <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+            Filtruj
+        </button>
+    </div>
+    </div>
+    
+<div class="collapse multi-collapse" id="multiCollapseExample2">
+    <div class="row p-0 m-0">
+    <div class="form-group col-md-2">
         <p class="text-center p-0 m-0">Nazwa:</p>
         <input type="text" class="form-control" placeholder="Wpisz nazwe" [(ngModel)]="searchTerm"/>
     </div>
     
-    <div class="form-group m-3 col-md-2">
-        <p class="text-center p-0 m-0">Cena maksymalna:</p>
+    <div class="form-group col-md-2">
+        <p class="text-center p-0 m-0">Cena/Doba:</p>
         <input type="number" class="form-control" placeholder="Wybierz cene" [(ngModel)]="searchPrice"/>
     </div>
-    <div class="form-group m-3 col-md-2">
+    <div class="form-group col-md-2">
         <p class="text-center p-0 m-0">Ilosc Miejsc:</p>
         <select class="form-control" [(ngModel)]="searchPeople">
             <option>2</option>
@@ -17,7 +29,7 @@
             <option>5</option>
           </select>
     </div>
-    <div class="form-group m-3 col-md-2">
+    <div class="form-group col-md-2">
         <p class="text-center p-0 m-0">Paliwo:</p>
         <select class="form-control" [(ngModel)]="searchFuel">
             <option>Benzyna</option>
@@ -25,7 +37,7 @@
             <option>LPG</option>
           </select>
     </div>
-    <div class="form-group m-3 col-md-2">
+    <div class="form-group col-md-2">
         <p class="text-center p-0 m-0">Klimatyzacja:</p>
         <select class="form-control" [(ngModel)]="searchKlima">
             <option>Klimatyzacja</option>
@@ -33,12 +45,13 @@
           </select>
     </div>
     </div>
-    
-    
+</div>
+
     <div class="row mt-2 mb-2 m-0">
         <div class="col-md-4" *ngFor="let car of cars|productFilter: searchTerm|cityFilter: searchCity|priceFilter: searchPrice|peopleFilter: searchPeople|fuelFilter: searchFuel|klimaFilter: searchKlima">
     <app-product-item [productItem]="car"></app-product-item>
         </div>
     </div>
     
+
     

@@ -14,6 +14,9 @@ const TOKEN_KEY = 'my-token';
   providedIn: 'root'
 })
 export class AuthenticationService {
+
+  id: any;
+
   private baseUrl = `${environment.baserUrl}${environment.port}`;
   isAuthenticated: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     !null

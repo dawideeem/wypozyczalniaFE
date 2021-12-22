@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MessangerService } from 'src/app/services/messanger.service';
 import { CarEditService } from './car-edit.service'
 
 @Component({
@@ -11,50 +10,42 @@ import { CarEditService } from './car-edit.service'
 })
 export class EditComponent implements OnInit {
 
+  @Input() data: any;
+
   Cities=['Kraków','Warszawa','Poznań','Kielce','Wrocław','Łódź'];
  
   private id: string = '';
   cars: any;
-  credentials: any;
+
   constructor(
-    private formBuilder: FormBuilder,
     private carEditService: CarEditService,
     private router: Router,
-    private messangerService: MessangerService,
   ) { }
 
-  ngOnInit(): void {
-    this.id=this.messangerService.getId();
-    this.carEditService.getSelected(this.id).subscribe(
+  credentials = new FormGroup({
+    name: new FormControl(null,[Validators.required, Validators.minLength(3)]),
+    city: new FormControl(null,[Validators.required, Validators.minLength(3)]),
+    gearbox: new FormControl(null,[Validators.required, Validators.minLength(3)]),
+    doors: new FormControl(null,[Validators.required, Validators.minLength(3)]),
+    fuel: new FormControl(null,[Validators.required, Validators.minLength(3)]),
+    people: new FormControl(null,[Validators.required, Validators.minLength(3)]),
+    condition: new FormControl(null,[Validators.required, Validators.minLength(3)]),
+    price: new FormControl(null,[Validators.required, Validators.minLength(1)]),
+    imageUrl: new FormControl(null,[Validators.required, Validators.minLength(5)])
+  });
+  ngOnInit(): void {}
+
+  ngOnChanges(): void {
+    this.carEditService.getSelected(this.data).subscribe(
       (res)=>{
         this.cars=res;
-        this.createForm();
+        this.credentials.patchValue(this.cars);
       },
       async(err)=>{
         console.log('Nie udalo sie pobrac samochodu')
       }
     ) 
   }
-
-
-
-
-
- private createForm(){
-  this.credentials = this.formBuilder.group({
-    name: [this.cars.name, [Validators.required, Validators.minLength(3)]],
-    city: [this.cars.city, [Validators.required, Validators.minLength(3)]],
-    gearbox: [this.cars.gearbox, [Validators.required, Validators.minLength(5)]],
-    doors: [this.cars.doors, [Validators.required, Validators.minLength(1)]],
-    fuel: [this.cars.fuel, [Validators.required, Validators.minLength(1)]],
-    people: [this.cars.people, [Validators.required, Validators.minLength(1)]],
-    condition: [this.cars.condition, [Validators.required, Validators.minLength(2)]],
-    price: [this.cars.price, [Validators.required, Validators.minLength(1)]],
-    imageUrl: [this.cars.imageUrl, [Validators.required, Validators.minLength(5)]],
-  })
- }
-
-
 
   submit(){
     const carData = {

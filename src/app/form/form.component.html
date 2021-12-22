@@ -1,159 +1,179 @@
-<div class="row m-0">
-<div class="card mb-4 shadow-sm m-4 col-md-3 h-50">
+<div class="row mw-100">
+<div class="card m-2 shadow-sm col-md-3">
     <img class="bd-placeholder-img card-img-top p-2" [src]=cars?.imageUrl/>
   
     <div class="card-body">
-        <p class="card-text text-center"><strong>{{cars?.name}}</strong></p>
-      <div style="padding-top: 15px;" class="car-type-descr col-xs-12">
-      <div class="car-type-descr col-xs-12">
-        <div class="car-type-descr-inside col-xs-12">
-          <div class="car-type-descr-inside-ul">
-            <table class="car-feature-table mx-auto">
-              <tbody>
-                <tr class="titles-table-row p-4">
-                  <td style="text-align: center;" class="p-2">
-                  <div>
-                    <img style="max-width: 40px;" alt="skrzynia manualna" src="https://kaizenrent.pl/images/car-manual-icon.png">
-                  </div>
-                  </td>
-                  <td>
-                  <div class="car-feature-text">
-                    <span>{{cars?.gearbox}}</span>
-                  </div>
+      <p class="card-text text-center"><strong>{{cars?.name}}</strong></p>
+    <div style="padding-top: 15px;" class="car-type-descr col-xs-12">
+    <div class="car-type-descr col-xs-12">
+      <div class="car-type-descr-inside col-xs-12">
+        <div class="car-type-descr-inside-ul">
+          <table class="car-feature-table mx-auto">
+            <tbody>
+              <tr class="titles-table-row p-4">
+                <td style="text-align: center;" class="p-2">
+                <div>
+                  <i class="fas fa-cogs"></i>
+                </div>
                 </td>
+                <td>
+                <div class="car-feature-text">
+                  <span>{{cars?.gearbox}}</span>
+                </div>
+              </td>
+              <td style="text-align: center;"class="p-2">
+                <div>
+                  <i class="fas fa-door-closed"></i>
+                </div>
+                </td>
+                <td>
+                <div class="car-feature-text">
+                  <span>{{cars?.doors}}</span>
+                </div>
+              </td>
+              </tr>
+              <tr class="titles-table-row">
                 <td style="text-align: center;"class="p-2">
-                  <div>
-                    <img style="max-width: 40px;" alt="skrzynia manualna" src="https://kaizenrent.pl/images/other-icon-1.png">
-                  </div>
-                  </td>
-                  <td>
-                  <div class="car-feature-text">
-                    <span>{{cars?.doors}}</span>
-                  </div>
+                <div>
+                  <i class="fas fa-gas-pump"></i>
+                </div>
                 </td>
-                </tr>
-                <tr class="titles-table-row">
-                  <td style="text-align: center;"class="p-2">
-                  <div>
-                    <img style="max-width: 40px;" alt="skrzynia manualna" src="https://kaizenrent.pl/images/other-icon-2.png">
-                  </div>
-                  </td>
-                  <td>
-                  <div class="car-feature-text">
-                    <span>{{cars?.fuel}}</span>
-                  </div>
+                <td>
+                <div class="car-feature-text">
+                  <span>{{cars?.fuel}}</span>
+                </div>
+              </td>
+              <td style="text-align: center;"class="p-2">
+                <div>
+                  <i class="fas fa-users"></i>
+                </div>
                 </td>
+                <td>
+                <div class="car-feature-text">
+                  <span>{{cars?.people}}</span>
+                </div>
+              </td>
+              </tr>
+              <tr class="titles-table-row">
                 <td style="text-align: center;"class="p-2">
-                  <div>
-                    <img style="max-width: 40px;" alt="skrzynia manualna" src="https://kaizenrent.pl/images/other-icon-3.png">
-                  </div>
-                  </td>
-                  <td>
-                  <div class="car-feature-text">
-                    <span>{{cars?.people}}</span>
-                  </div>
+                <div>
+                  <i class="far fa-snowflake"></i>
+                </div>
                 </td>
-                </tr>
-                <tr class="titles-table-row">
-                  <td style="text-align: center;"class="p-2">
-                  <div>
-                    <img style="max-width: 40px;" alt="skrzynia manualna" src="https://kaizenrent.pl/images/car-snowflake-icon.png">
-                  </div>
-                  </td>
-                  <td>
-                  <div class="car-feature-text">
-                    <span>{{cars?.condition}}</span>
-                  </div>
-                </td>
-                </tr>
-              </tbody>
-            </table>
+                <td>
+                <div class="car-feature-text">
+                  <span>{{cars?.condition}}</span>
+                </div>
+              </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <p class="card-text"><strong>{{ cars?.price | currency: 'PLN'}} / <small>doba</small></strong></p>
+    </div>
+  </div>
+  </div>
+<div class="col">
+  <div class="row">
+<form [formGroup]="myCredentials"> 
+  <div class="row">
+    <div class="col-md-4 m-2">
+      <p class="h5 text-center">Wybierz datę wypożyczenia</p>
+      <div class="col">
+        <label for="example-date-input" class="col-form-label">Początek</label>
+        <input class="form-control" type="date" id="example-date-input" formControlName="date1">
+      </div>
+      <div class="col">
+        <label for="example-date-input" class="col-form-label">Koniec</label>
+        <input class="form-control" type="date" id="example-date-input" formControlName="date2">
+      </div>
+      <div class="col">
+      <label for="example-date-input" class="col-form-label">Miasto odbioru Samochodu</label>
+      <input class="form-control" type="text" placeholder="{{cars?.city}}" readonly>
+      </div>
+      <div class="col my-3 text-center">
+       <p class="h6"> Łączna cena:</p><p class="h4"> {{calculateDiff(myCredentials.controls.date1.value,myCredentials.controls.date2.value, cars?.price)}} </p>
+      </div>
+
+      </div>
+
+  <div class="col-md-6 m-2 text-center">
+    <p class="h5">Twoje Dane</p>
+
+    <div class="row">
+      <div class="form-floating col mx-2">
+          <input type="text" placeholder="Imie" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="firstname" formControlName="firstname" required>
+          <label for="firstname">Imie</label>
+      </div> 
+      <div class="form-floating col mx-2">
+          <input type="text" placeholder="Nazwisko" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="lastname" formControlName="lastname" required>
+          <label for="lastname">Nazwisko</label>
+      </div>
+  </div>
+  <div class="row">
+      <div class="form-floating col mx-2">
+          <input type="text" placeholder="Telefon" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="phone" formControlName="phone" required>
+          <label for="phone">Telefon</label>
+          </div> 
+          <div class="form-floating col mx-2">
+              <input type="text" placeholder="email" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="email" formControlName="email" required>
+              <label for="email">Email</label>
+              </div> 
+      </div>
+      <div class="row">
+      <div class="col mx-2 form-floating">
+          <input type="text" placeholder="Miasto" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="city" formControlName="city" required>
+          <label for="city">Miasto</label>
           </div>
-        </div>
+          <div class="col mx-2 form-floating">
+              <input type="text" placeholder="Kod" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="postal" formControlName="postal" required>
+              <label for="postal">Kod Pocztowy</label>
+              </div>
       </div>
-    </div>
-      <div class="d-flex justify-content-between align-items-center">
-        <div class="btn-group">
-          
-        </div>
-        <p class="card-text"><strong>{{ cars?.price | currency: 'PLN'}} / <small>doba</small></strong></p>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="col">
-<h1 class="display-4">Wypełnij swoje dane</h1>
-<form>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputName">Imię</label>
-      <input type="email" class="form-control" id="inputEmail4">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputPassword4">Nazwisko</label>
-      <input type="password" class="form-control" id="inputPassword4">
-    </div>
-  </div>
-  <div class="form-group col-md-6">
-    <label for="inputAddress">Ulica</label>
-    <input type="text" class="form-control" id="inputAddress">
-  </div>
-  <div class="form-group col-md-6">
-    <label for="inputAddress2">Numer domu/mieszkania</label>
-    <input type="text" class="form-control" id="inputAddress2">
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputCity">Miasto</label>
-      <input type="text" class="form-control" id="inputCity">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputState">Województwo</label>
-      <input type="text" class="form-control" id="inputCity">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputZip">Pesel</label>
-      <input type="text" class="form-control" >
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputZip">Numer Dowodu</label>
-      <input type="text" class="form-control" >
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputZip">Numer Telefonu</label>
-      <input type="text" class="form-control" >
-    </div>
-    <div class="col-md-6">
-      <label for="example-date-input" class="col-md-6 col-form-label">Początek</label>
-      <input class="form-control" type="date" value="2021-01-01" id="example-date-input">
-  </div>
-  <div class="col-md-6">
-      <label for="example-date-input" class="col-md-6 col-form-label">Koniec</label>
-      <input class="form-control" type="date" value="2021-12-31" id="example-date-input">
-  </div>
-  <div class="col-md-6">
-    <label for="example-date-input" class="col-md-6 col-form-label">Miasto odbioru Samochodu</label>
-    <input class="form-control" type="text" placeholder="{{cars?.city}}" readonly>
+      <div class="row">
+          <div class="col mx-2 form-floating">
+              <input type="text" placeholder="Ulica" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="street" formControlName="street" required>
+              <label for="street">Ulica</label>
+              </div>
+          <div class="col mx-2 form-floating">
+                  <input type="text" placeholder="Numerbud" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="build" formControlName="build" required>
+                  <label for="build">Numer domu</label>
+                  </div>
+              </div>
+                  <div class="form-group mx-2 form-floating">
+                      <input type="text" placeholder="Urodziny" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="birth" formControlName="birth" required>
+                      <label for="birth">Data urodzenia</label>
+                      </div>
 </div>
-  </div>
-  <button type="button" class="btn btn-secondary pull-right m-3" id="btnContactUs" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Wyślij wiadomość</button>
+<div class="col text-center my-auto">
+
+  <button type="button" class="btn btn-success m-2" (click)="submit()" data-bs-toggle="modal" data-bs-target="#exampleModal">Wynajmij</button>
+</div>
+</div>
+
 </form>
+
 </div>
 </div>
+
+
+
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Dziękujemy wybranie naszej wypozyczalni</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Dziękujemy</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Potwierdzimy Państwa rezerwację najszybciej jak to możliwe.
+        Dziękujemy za skorzystanie z naszego serwisu, możesz sprawdzić status swojej rezerwacji w zakładce "Twoje rezerwacje".
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" data-bs-dismiss="modal" class="btn btn-success" [routerLink]="['../../userpanel/userrent']">Przejdź</button>
       </div>
     </div>
   </div>

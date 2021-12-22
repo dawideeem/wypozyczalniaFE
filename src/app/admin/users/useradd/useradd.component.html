@@ -1,0 +1,32 @@
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+<div class="modal-header">
+        <h5 class="modal-title display-6 text-center">Dodawanie Konta Administratora</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+<div class="d-flex justify-content-center text-center" >
+<form [formGroup]="credentials">
+    <div class="form-group form-floating">
+        <input type="text" placeholder="Login" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="floatingInput" formControlName="username" required>
+        <label for="floatingInput">Login</label>
+        </div>
+        <div class="form-group form-floating">
+        <input type="email" placeholder="E-mail" formControlName="email" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="floatingInput2" required>
+        <label for="floatingInput2">E-mail</label>
+        </div>
+        <div class="form-group form-floating">
+        <input type="password" placeholder="Hasło" formControlName="password" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="floatingInput3" required>
+        <label for="floatingInput3">Hasło</label>
+        </div>
+        <div class="modal-footer justify-content-center border-top-0">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Wróć</button>
+            <button class="btn btn-success p-2 px-4" [disabled]="!credentials.valid"
+(click)="createNewUser()">
+Utwórz konto
+</button>
+</div>
+</form>
+</div>
+</div></div>
+</div>

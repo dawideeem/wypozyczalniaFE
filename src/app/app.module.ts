@@ -19,6 +19,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { PeopleFilterPipe } from './cars/product-list/people-filter.pipe';
 import { FuelFilterPipe } from './cars/product-list/fuel-filter.pipe';
 import { KlimaFilterPipe } from './cars/product-list/klima-filter.pipe';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UserpanelComponent } from './userpanel/userpanel.component';
+import { FooterComponent } from './home/footer/footer.component';
+import { NavbarComponent } from './home/navbar/navbar.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
+
 
 
 
@@ -39,14 +45,18 @@ import { KlimaFilterPipe } from './cars/product-list/klima-filter.pipe';
     LoginComponent,
     PeopleFilterPipe,
     FuelFilterPipe,
-    KlimaFilterPipe
+    KlimaFilterPipe,
+    UserpanelComponent,
+    FooterComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

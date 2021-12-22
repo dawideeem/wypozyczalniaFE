@@ -1,48 +1,37 @@
-<section class="register-section">
-    <div class="img-wrap">
-        <div class="container">
-            <div class="row align-item-center">
-                <div class="col-sm">
-
-                </div>
-                <div class="col-sm register">
-                    <div class="lg-form">
-                        <div class="row">
-                            <h1 class="logIn py-2 text-center text-uppercase">Utwórz konto</h1>
-                            <form [formGroup]="credentials">
-                                <div class="form-group">
-                                    <label class="login-label">Login </label>
-                                    <input type="text" formControlName="username" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label class="login-label">E-mail </label>
-                                    <input type="email" formControlName="email" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label class="login-label">Hasło </label>
-                                    <input type="password" formControlName="password" class="form-control" required>
-
-
-                                    <p>Masz juz konto? <a routerLink='/login'>Zaloguj się</a></p>
-
-                                    <p *ngIf="isRegistered">Twoje konto zostało utworzone, za 5 sekund zostaniesz
-                                        przekierowany na strone główną.</p>
-
-
-                                    <button class="btn btn-primary" [disabled]="!credentials.valid"
-                                        (click)="createNewUser()">
-                                        Utwórz konto
-                                    </button>
-                                </div>
-                            </form>
-
+<div class="bg-image" style="height: 100vh; background-image: url('../assets/background_1445.jpg');background-repeat: no-repeat;background-size:cover;background-position: bottom;">
+    <div class="row flex-column justify-content-center align-items-center" style="min-height: 70vh;">
+        <div class="mx-auto col-sm-3" style="color:white;">
+            <h2 class="logIn display-5 text-center">Rejestracja</h2>
+                <form [formGroup]="credentials">
+                    <div class="w-75 mx-auto" style="color: black;">
+                        <div class="form-group form-floating">
+                            <input type="text" placeholder="Login" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="floatingInput" formControlName="username" required>
+                            <label for="floatingInput">Login</label>
                         </div>
+                        <div class="form-group form-floating">
+                            <input type="email" placeholder="E-mail" formControlName="email" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="floatingInput2" required>
+                            <label for="floatingInput2">E-mail</label>
+                        </div>
+                        <div class="form-group form-floating">
+                            <input type="password" placeholder="Hasło" formControlName="password" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="floatingInput3" required>
+                            <label for="floatingInput3">Hasło</label>
+                        </div>   
                     </div>
-                </div>
-                <div class="col-sm">
+                    <div class="login text-center my-4">
+                        <button class="btn btn-secondary p-2 px-4" [disabled]="!credentials.valid"
+                        (click)="createNewUser()">
+                            Utwórz konto
+                        </button>
+                    </div>
+                    <div class="text-center">
+                        Masz juz konto? <br> <a routerLink='/login'><b>Zaloguj się <</b></a>
+                    </div>
+                    <p *ngIf="isRegistered">Twoje konto zostało utworzone, za 5 sekund zostaniesz
+                    przekierowany na strone główną.</p>
 
-                </div>
-            </div>
+
+                                    
+                </form>
         </div>
     </div>
-</section>
+</div>

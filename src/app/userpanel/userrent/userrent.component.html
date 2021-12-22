@@ -1,0 +1,31 @@
+<h1 class="display-6 text-center">Twoje rezerwacje</h1>
+<div class="table-responsive">
+    <table class="table text-center">
+        <thead>
+          <tr>
+            <th scope="col">Nazwa Samochodu</th>
+            <th scope="col">Data Początkowa</th>
+            <th scope="col">Data Końcowa</th>
+            <th scope="col">Koszt</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let rent of rents">
+          <tr>
+            <td>{{rent.carRent}}</td>
+            <td>{{rent.startDate | date}}</td>
+            <td>{{rent.endDate | date}}</td>
+            <td>{{rent.price}}</td>
+            <td>
+              <div *ngIf="rent.rented==true" style="color:green">
+                Zatwierdzona
+              </div>
+              <div *ngIf="rent.rented==false" style="color:red">
+                Niezatwierdzona
+              </div>
+            </td>
+            
+          </tr>
+        </tbody>
+      </table>
+    </div>

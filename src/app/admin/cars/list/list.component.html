@@ -1,8 +1,15 @@
 <h1 class="display-6 text-center">Lista aktualnych Samochodów</h1>
+<div class="table-responsive">
+  <div>
+    <button type="button" class="btn btn-success float-end me-2 my-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Dodaj samochód</button><br>
+
+      <app-create></app-create>
+
+  </div>
 <table class="table text-center">
     <thead>
       <tr>
-        <th scope="col">Nazwa Pizzy</th>
+        <th scope="col">Nazwa Samochodu</th>
         <th scope="col">Miasto</th>
         <th scope="col">Skrzynia Biegów</th>
         <th scope="col">Liczba Drzwi</th>
@@ -23,8 +30,10 @@
         <td>{{car.people}}</td>
         <td>{{car.condition}}</td>
         <td>{{car.price}}</td>
-        <td> <button type="button" class="btn btn-dark mx-3" (click)="getCarId(car.id)" routerLink="/admin/edit">Edytuj</button>
-          <button type="button" (click)="delete(car.id)" class="btn btn-danger">Usuń</button></td>
+        <td> <button type="button" class="btn btn-dark m-1" (click)="getCarId(car.id)" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">Edytuj</button>
+          <button type="button" (click)="delete(car.id)" class="btn btn-danger m-1">Usuń</button></td>
       </tr>
     </tbody>
   </table>
+</div>
+<app-edit [data]="sendId"></app-edit>

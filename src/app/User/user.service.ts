@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { IUser } from './I-user';
 
 @Injectable({
@@ -6,12 +7,23 @@ import { IUser } from './I-user';
 })
 export class UserService {
     private userDetails!: IUser;
+    userName: any;
+    id: any;
 
     storeUserDetails(userDetails: IUser) {
         this.userDetails = userDetails;
+        this.userName = userDetails.username;
+        this.id = userDetails.id;
     }
 
-    getUserDetails(): IUser {
+    getUserDetails(): IUser{
         return this.userDetails;
     }
+    getUserName(){
+        return this.userName;
+    }
+    getUserId(){
+        return this.id;
+    }
+
 }

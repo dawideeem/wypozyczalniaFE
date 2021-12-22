@@ -1,0 +1,71 @@
+<h1 class="display-6 text-center">Wypozyczenia</h1>
+<div class="table-responsive">
+    <table class="table text-center">
+        <thead>
+          <tr>
+            <th scope="col">Nazwa Samochodu</th>
+            <th scope="col">Wynajmujący</th>
+            <th scope="col">Data Początkowa</th>
+            <th scope="col">Data Końcowa</th>
+            <th scope="col">Koszt</th>
+            <th scope="col">Status</th>
+            <th scope="col">Opcje</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let rent of rents">
+          <tr>
+            <td>{{rent.carRent}}</td>
+            <td>{{rent.firstname}} {{rent.lastname}}</td>
+            <td>{{rent.startDate | date}}</td>
+            <td>{{rent.endDate | date}}</td>
+            <td>{{rent.price}}</td>
+            <td>
+              <div *ngIf="rent.rented==true" style="color:green">
+                Zatwierdzona
+              </div>
+              <div *ngIf="rent.rented==false" style="color:red">
+                Niezatwierdzona
+              </div>
+            </td>
+            <td> <button type="button" (click)="send(rent)" class="btn btn-dark m-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Podgląd</button>
+                <button type="button" (click)="accept(rent.id)" class="btn btn-success m-1">Zatwierdź</button>
+              <button type="button" (click)="decline(rent.id)" class="btn btn-danger m-1">Odrzuć</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Informacje</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <p><b>Imie:</b> {{Rent.firstname}} </p>
+              <p><b>Nazwisko:</b> {{Rent.lastname}} </p>
+              <p><b>Email: </b>{{Rent.email}} </p>
+              <p><b>Telefon:</b> {{Rent.phone}} </p>
+              <p><b>Miasto: </b>{{Rent.city}} </p>
+              <p><b>Kod-Pocztowy: </b>{{Rent.postal}} </p>
+              <p><b>Ulica: </b>{{Rent.street}} </p>
+              <p><b>Numer Mieszkania:</b> {{Rent.build}} </p>
+              <p><b>Samochód:</b> {{Rent.carRent}} </p>
+              <p><b>Miejsce wynajmu:</b> {{Rent.cityRent}} </p>
+              <p><b>Początek wynajmu:</b> {{Rent.startDate | date}} </p>
+              <p><b>Koniec wynajmu:</b> {{Rent.endDate | date}} </p>
+              <p><b>Cena wynajmu:</b> {{Rent.price}} </p>
+              <p><b>Status: </b></p><div *ngIf="Rent.rented==true" style="color:green">
+                Zatwierdzona
+              </div>
+              <div *ngIf="Rent.rented==false" style="color:red">
+                Niezatwierdzona
+              </div> 
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Wróć</button>
+          </div>
+        </div>
+      </div>
+    </div>

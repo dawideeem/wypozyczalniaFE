@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CarService } from './car.service';
 import { Car } from 'src/app/models/car';
-import {MessangerService } from 'src/app/services/messanger.service'
 
 
 @Component({
@@ -13,10 +12,10 @@ export class ListComponent implements OnInit {
   cars: Car[]=[];
   selectedCarId!: string;
   isEdit = false;
+  sendId:any;
 
   constructor(
-    private carService: CarService,
-    private messangerService: MessangerService
+    private carService: CarService
   ) { }
 
   ngOnInit() {
@@ -43,7 +42,7 @@ export class ListComponent implements OnInit {
   }
 
   getCarId(id:any){
-    this.messangerService.sendId(id)
+    this.sendId=id;
   } 
 
 }

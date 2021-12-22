@@ -1,18 +1,18 @@
-<div class="card mb-4 shadow-sm p-0 ">
+<div class="card mb-4 shadow-sm p-0" >
   <img class="bd-placeholder-img card-img-top p-2" height="250px" [src]=productItem?.imageUrl/>
 
   <div class="card-body">
       <p class="card-text text-center"><strong>{{productItem?.name}}</strong></p>
     <div style="padding-top: 15px;" class="car-type-descr col-xs-12">
-    <div class="car-type-descr col-xs-12">
-      <div class="car-type-descr-inside col-xs-12">
+    <div class="car-type-descr col-xs-5">
+      <div class="car-type-descr-inside col-xs-5">
         <div class="car-type-descr-inside-ul">
           <table class="car-feature-table mx-auto">
             <tbody>
               <tr class="titles-table-row p-4">
                 <td style="text-align: center;" class="p-2">
                 <div>
-                  <img style="max-width: 40px;" alt="skrzynia manualna" src="https://kaizenrent.pl/images/car-manual-icon.png">
+                  <i class="fas fa-cogs"></i>
                 </div>
                 </td>
                 <td>
@@ -22,7 +22,7 @@
               </td>
               <td style="text-align: center;"class="p-2">
                 <div>
-                  <img style="max-width: 40px;" alt="skrzynia manualna" src="https://kaizenrent.pl/images/other-icon-1.png">
+                  <i class="fas fa-door-closed"></i>
                 </div>
                 </td>
                 <td>
@@ -34,7 +34,7 @@
               <tr class="titles-table-row">
                 <td style="text-align: center;"class="p-2">
                 <div>
-                  <img style="max-width: 40px;" alt="skrzynia manualna" src="https://kaizenrent.pl/images/other-icon-2.png">
+                  <i class="fas fa-gas-pump"></i>
                 </div>
                 </td>
                 <td>
@@ -44,7 +44,7 @@
               </td>
               <td style="text-align: center;"class="p-2">
                 <div>
-                  <img style="max-width: 40px;" alt="skrzynia manualna" src="https://kaizenrent.pl/images/other-icon-3.png">
+                  <i class="fas fa-users"></i>
                 </div>
                 </td>
                 <td>
@@ -56,7 +56,7 @@
               <tr class="titles-table-row">
                 <td style="text-align: center;"class="p-2">
                 <div>
-                  <img style="max-width: 40px;" alt="skrzynia manualna" src="https://kaizenrent.pl/images/car-snowflake-icon.png">
+                  <i class="far fa-snowflake"></i>
                 </div>
                 </td>
                 <td>
@@ -74,7 +74,7 @@
     <div class="d-flex justify-content-between align-items-center">
       <div class="btn-group">
         <button 
-        type="button" class="btn btn-sm btn-outline-secondary mt-3 p-2" (click)="handleAddToCart(productItem?.id)">
+        type="button" class="btn btn-sm btn-outline-dark mt-3 p-2" (click)="handleAddToCart(productItem?.id)">
         Wynajmij</button>
       </div>
       <p class="card-text"><strong>{{ productItem?.price | currency: 'PLN'}} / <small>doba</small></strong></p>

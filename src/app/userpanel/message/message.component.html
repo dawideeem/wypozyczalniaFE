@@ -1,0 +1,52 @@
+<h1 class="display-6 text-center">Pytania</h1>
+<div class="table-responsive">
+<table class="table text-center">
+    <thead>
+      <tr>
+        <th scope="col">Temat</th>
+        <th scope="col">Wiadomość</th>
+        <th scope="col">Opcje</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let ms of msg">
+      <tr>
+        <td>{{ms.subject}}</td>
+        <td>{{ms.userMessage[0]}}</td>
+        <td > <button type="button" (click)="send(ms)" class="btn btn-success m-1"  data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Podgląd</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content" style="word-wrap:break-word;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Odpowiedz na pytanie</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="myCredentials" (ngSubmit)="onSubmit()">
+          <div *ngFor="let message of UserMessage;index as i" class="mb-3">
+            <div class="text-end border border-success rounded px-2 py-1 m-2">
+              <p class="h6">{{username}}:</p>
+              {{UserMessage[i]}}
+          </div>
+          <div *ngIf="AdminMessage?.length" class="text-start border border-secondary rounded px-2 py-1 m-2">
+            <p class="h6">Administrator:</p>
+             {{AdminMessage[i]}}
+        </div>
+          </div>
+          <div class="mb-3">
+            <textarea class="form-control" id="message-text" formControlName="userMessage"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zamknij</button>
+            <button type="submit" class="btn btn-success">Wyślij wiadomość</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

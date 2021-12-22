@@ -9,4 +9,10 @@ export interface Car{
     condition: string;
     price: number;
     imageUrl: string;
+    images: CarImage[];
 }
+
+export interface CarImage {
+    title: string;
+    image: string;
+  }

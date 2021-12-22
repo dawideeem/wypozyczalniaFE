@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MessangerService } from 'src/app/services/messanger.service';
 import {Car} from 'src/app/models/car';
-import { CarService } from 'src/app/admin/list/car.service';
+import { CarService } from 'src/app/admin/cars/list/car.service';
 
 @Component({
   selector: 'app-product-list',

@@ -1,0 +1,52 @@
+<div class="col-md-4 mx-auto text-center">
+    <form [formGroup]="myCredentials" (ngSubmit)="onSubmit()">
+        <div class="row">
+        <div class="form-floating col mx-2">
+            <input type="text" placeholder="Imie" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="firstname" formControlName="firstname" required>
+            <label for="firstname">Imie</label>
+        </div> 
+        <div class="form-floating col mx-2">
+            <input type="text" placeholder="Nazwisko" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="lastname" formControlName="lastname" required>
+            <label for="lastname">Nazwisko</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-floating col mx-2">
+            <input type="text" placeholder="Telefon" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="phone" formControlName="phone" required>
+            <label for="phone">Telefon</label>
+            </div> 
+            <div class="form-floating col mx-2">
+                <input type="text" placeholder="email" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="email" formControlName="email" required>
+                <label for="email">Email</label>
+                </div> 
+        </div>
+        <div class="row">
+        <div class="col mx-2 form-floating">
+            <input type="text" placeholder="Miasto" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="city" formControlName="city" required>
+            <label for="city">Miasto</label>
+            </div>
+            <div class="col mx-2 form-floating">
+                <input type="text" placeholder="Kod" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="postal" formControlName="postal" required>
+                <label for="postal">Kod Pocztowy</label>
+                </div>
+        </div>
+        <div class="row">
+            <div class="col mx-2 form-floating">
+                <input type="text" placeholder="Ulica" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="street" formControlName="street" required>
+                <label for="street">Ulica</label>
+                </div>
+            <div class="col mx-2 form-floating">
+                    <input type="text" placeholder="Numerbud" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="build" formControlName="build" required>
+                    <label for="build">Numer domu</label>
+                    </div>
+                </div>
+                    <div class="form-group mx-2 form-floating">
+                        <input type="text" placeholder="Urodziny" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="birth" formControlName="birth" required>
+                        <label for="birth">Data urodzenia</label>
+                        </div>
+                        
+                        <button type="submit" [disabled]="!myCredentials.valid" class="btn btn-success my-3">Edytuj Dane</button>
+    </form>
+
+
+    </div>

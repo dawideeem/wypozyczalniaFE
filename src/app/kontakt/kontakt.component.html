@@ -1,5 +1,4 @@
-
-
+<div style="min-height: 75vh;">
 <div class="jumbotron jumbotron-sm">
     <div class="container">
         <div class="row">
@@ -14,43 +13,38 @@
     <div class="row">
         <div class="col-md-8">
             <div class="well well-sm">
-                <form>
+                <form [formGroup]="myCredentials" (ngSubmit)="onSubmit()">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="name">
-                                Imię</label>
-                            <input type="text" class="form-control" id="name" placeholder="Enter name" required="required" />
+                        <div class="form-floating my-2">
+                            <input type="text" class="form-control" id="name" placeholder="Enter name" formControlName="username" required="required" />
+                            <label for="name">Login</label>
                         </div>
-                        <div class="form-group">
-                            <label for="email">
-                                Adres Email</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
-                                </span>
-                                <input type="email" class="form-control" id="email" placeholder="Enter email" required="required" /></div>
-                        </div>
-                        <div class="form-group">
+                            <div class="form-floating my-2">
+                                <input type="email" class="form-control" id="email" placeholder="Enter email" formControlName="email" required="required" />
+                                <label for="email">Adres Email</label>
+                                </div>
+                        <div class="form-floating my-2">
+                            <select id="subject" name="subject" class="form-control" formControlName="subject" required="required">
+                                <option value="na" selected="">Wybierz jeden:</option>
+                                <option value="Pytania dotyczące wynajmu">Pytania dotyczące wynajmu</option>
+                                <option value="Pytanie dotyczące samochodu">Pytanie dotyczące samochodu</option>
+                                <option value="Pytanie dotyczące strony internetowej">Pytanie dotyczące strony internetowej</option>
+                            </select>
                             <label for="subject">
                                 Temat</label>
-                            <select id="subject" name="subject" class="form-control" required="required">
-                                <option value="na" selected="">Wybierz jeden:</option>
-                                <option value="service">Pytania dotyczące wynajmu</option>
-                                <option value="suggestions">Pytanie dotyczące samochodu</option>
-                                <option value="product">Pytanie dotyczące strony internetowej</option>
-                            </select>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="name">
-                                Wiadomość</label>
-                            <textarea name="message" id="message" class="form-control" rows="9" cols="25" required="required"
+                        <div class="form-floating">
+                            <textarea name="message" id="message" style="min-height: 25vh;" formControlName="message" class="form-control my-2" rows="9" cols="25" required="required"
                                 placeholder="Wiadomość"></textarea>
+                                <label for="name">
+                                    Wiadomość</label>
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <button type="button" class="btn btn-secondary pull-right" id="btnContactUs" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button [disabled]="!myCredentials.valid" type="submit" class="btn btn-success pull-right mt-2" id="btnContactUs" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Wyślij wiadomość</button>
                     </div>
                 </div>
@@ -80,11 +74,12 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          Postaramy się odpowiedzieć jak najszybciej będzie to możliwe. 
+          Postaramy się odpowiedzieć jak najszybciej będzie to możliwe.
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
   </div>
+</div>

@@ -1,11 +1,15 @@
-<h1 class="display-4 text-center">Zarządzanie Samochodami</h1>
+<div style="min-height: 75vh;">
+<h1 class="display-4 text-center">Panel Administratora</h1>
 <nav class="navbar navbar-light bg-light">
   <form class="container-fluid justify-content-center">
-    <button class="btn btn-outline-success me-3" routerLink="list">Lista Samochodów</button>
-    <button class="btn btn-outline-success me-3" routerLink="create">Dodaj Samochód</button>
-    <button class="btn btn-outline-success me-3" [routerLink]="['']">Wróć</button>
+    <button class="btn btn-outline-success m-1 me-2" routerLink="list">Zarządzanie Samochodami</button>
+    <button class="btn btn-outline-success m-1 me-2" routerLink="userlist">Zarządzanie Użytkownikami</button>
+    <button class="btn btn-outline-success m-1 me-2" routerLink="rents">Zarządzanie wynajmem</button>
+    <button class="btn btn-outline-success m-1 me-2" routerLink="msg">Pytania</button>
+    <button class="btn btn-outline-success m-1 me-2" [routerLink]="['']">Wróć</button>
   </form>
 
 </nav>
 
 <router-outlet></router-outlet>
+</div>

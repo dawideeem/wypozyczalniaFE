@@ -1,15 +1,22 @@
 .main{
     height: 40%; 
-    background-image: url("../../assets/form1.jpg");
+    background-image: url("../../assets/background_1445.jpg");
     width: 100%;
     text-align: center;
     align-items: center;
     color: white;
     padding-bottom: 0;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size:cover;
 }
 h1{
     padding-top: 10%;
 }
 form{
     max-width: 100%;
+}
+
+.row{
+    margin-left: 0;
 }
