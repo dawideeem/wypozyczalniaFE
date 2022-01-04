@@ -19,31 +19,40 @@
   </table>
 </div>
 
+
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable">
-    <div class="modal-content" style="word-wrap:break-word;">
+    <div class="modal-content" style="word-wrap:break-word;"> 
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Odpowiedz na pytanie</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" style="color:white;">
         <form [formGroup]="myCredentials" (ngSubmit)="onSubmit()">
-          <div *ngFor="let message of UserMessage;index as i" class="mb-3">
-            <div class="text-end border border-success rounded px-2 py-1 m-2" style="background-color: rgb(147, 180, 147)">
-              <p class="h6">{{username}}:</p>
-              {{UserMessage[i]}}
+          
+          <div *ngFor="let message of UserMessage;index as i">
+
+            <div class="text-start">
+              <div class="text-end bg-success border-secondary rounded-pill px-3 py-2 m-2"><p class="h6">{{username}}:</p>
+                {{UserMessage[i]}}
+              </div>
+            </div>
+          
+            
+            <div class="text-end">
+            <div *ngIf="AdminMessage[i]?.length>0" class="text-start end-0 bg-secondary border-success rounded-pill px-3 py-2 m-2"><p class="h6">Administrator:</p>
+               {{AdminMessage[i]}}
+            </div>
           </div>
-          <div *ngIf="AdminMessage[i]?.length>0" class="text-start border border-secondary rounded px-2 py-1 m-2" style="background-color: rgb(194, 194, 194)">
-            <p class="h6">Administrator:</p>
-             {{AdminMessage[i]}}
-        </div>
-          </div>
-          <div class="mb-3">
-            <textarea class="form-control" id="message-text" formControlName="userMessage"></textarea>
-          </div>
+      </div>
+
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zamknij</button>
-            <button type="submit" class="btn btn-success">Wyślij wiadomość</button>
+            <div class="input-group input-group-sm">
+              <input type="text" class="form-control m-1" id="message-text" formControlName="userMessage" placeholder="Twoja wiadomość..."/>
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-success m-1"><i class="fas fa-paper-plane"></i><span class="d-none d-sm-inline"> Wyślij</span></button>
+              </div>
+            </div>
           </div>
         </form>
       </div>

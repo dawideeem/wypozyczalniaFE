@@ -12,6 +12,7 @@ import { MessagesComponent } from './msg/messages/messages.component';
 import { SearchFiilterPipe } from './msg/pipes/search-fiilter.pipe';
 import { FileUploadComponent } from '../file-upload/file-upload.component';
 import { RentsComponent } from './rents/rents.component';
+import { StatsComponent } from './stats/stats.component';
 
 
 
@@ -25,6 +26,6 @@ import { RentsComponent } from './rents/rents.component';
 
   ],
 
-  declarations: [EditComponent, CreateComponent, ListComponent, UseraddComponent, UserlistComponent, UsereditComponent, MessagesComponent, SearchFiilterPipe,FileUploadComponent, RentsComponent]
+  declarations: [EditComponent, CreateComponent, ListComponent, UseraddComponent, UserlistComponent, UsereditComponent, MessagesComponent, SearchFiilterPipe,FileUploadComponent, RentsComponent, StatsComponent]
 })
 export class AdminModule { }

@@ -72,15 +72,16 @@ export class MessagesComponent implements OnInit {
       option: true
     };
     this.msgService.updateMsg(msgData,this.id).subscribe((res)=>{
-
+      this.getMsgList()
     },(err)=>{this.getMsgList()
 
     }
     );
+    window.location.reload();
   }
   filter(){
     this.msg.forEach((item)=>{
-      console.log(item)
+     
     }
     )
     

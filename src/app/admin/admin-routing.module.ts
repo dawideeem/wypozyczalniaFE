@@ -9,6 +9,7 @@ import { UserlistComponent } from './users/userlist/userlist.component';
 import { UsereditComponent } from './users/useredit/useredit.component';
 import { MessagesComponent } from './msg/messages/messages.component';
 import { RentsComponent } from './rents/rents.component';
+import { StatsComponent } from './stats/stats.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
       { path: 'useredit', component: UsereditComponent },
       { path: 'msg', component: MessagesComponent },
       { path: 'rents', component: RentsComponent },
+      { path: 'stats', component: StatsComponent },
     ]
   }
 ]

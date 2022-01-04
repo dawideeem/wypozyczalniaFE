@@ -33,8 +33,8 @@ rentPrice:any;
     birth: new FormControl(null,[Validators.required, Validators.minLength(3)]),
     email: new FormControl(null,[Validators.required, Validators.email]),
     postal: new FormControl(null,[Validators.required, Validators.minLength(3)]),
-    date1: new FormControl('2022-01-01'),
-    date2: new FormControl('2022-01-03')
+    date1: new FormControl('2022-02-01'),
+    date2: new FormControl('2022-02-03')
   });
 
   ngOnInit(): void {
