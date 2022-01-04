@@ -29,11 +29,11 @@
       <div class="modal-body">
         <form [formGroup]="myCredentials" (ngSubmit)="onSubmit()">
           <div *ngFor="let message of UserMessage;index as i" class="mb-3">
-            <div class="text-end border border-success rounded px-2 py-1 m-2">
+            <div class="text-end border border-success rounded px-2 py-1 m-2" style="background-color: rgb(147, 180, 147)">
               <p class="h6">{{username}}:</p>
               {{UserMessage[i]}}
           </div>
-          <div *ngIf="AdminMessage?.length" class="text-start border border-secondary rounded px-2 py-1 m-2">
+          <div *ngIf="AdminMessage[i]?.length>0" class="text-start border border-secondary rounded px-2 py-1 m-2" style="background-color: rgb(194, 194, 194)">
             <p class="h6">Administrator:</p>
              {{AdminMessage[i]}}
         </div>
