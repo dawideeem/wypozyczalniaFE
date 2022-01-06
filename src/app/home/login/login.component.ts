@@ -1,6 +1,5 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service';
 
@@ -13,10 +12,11 @@ export class LoginComponent implements OnInit {
 
   users: any;
 
-  credentials = this.formBuilder.group({
-    username: ['', [Validators.required, Validators.minLength(6)]],
-    password: ['', [Validators.required, Validators.minLength(6)]]
+  credentials= new FormGroup({
+    username: new FormControl("",[Validators.required, Validators.minLength(6)]),
+    password: new FormControl("",[Validators.required, Validators.minLength(6)]),
   })
+
 
   constructor(private formBuilder: FormBuilder, private authService: AuthenticationService, private router: Router) { }
 
@@ -44,4 +44,8 @@ export class LoginComponent implements OnInit {
   onActive() {
     window.scroll(0, 0)
   }
+
+  get validator(){
+    return this.credentials.controls;
+  };
 }

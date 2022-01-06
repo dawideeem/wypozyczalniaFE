@@ -16,7 +16,7 @@ export class AuthGuard implements CanActivate {
       return true;
     } else {
       console.log('Nie masz dostepu');
-      this.router.navigate(['home/login'])
+      this.router.navigate(['login'])
       setTimeout(() => {
         this.scroll()
       })

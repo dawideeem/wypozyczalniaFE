@@ -7,10 +7,18 @@
                                 <div class="form-group form-floating">
                                     <input type="text" placeholder="Login" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="floatingInput" formControlName="username" required>
                                     <label for="floatingInput">Login</label>
-                                </div>
+                                        <div *ngIf="validator.username.touched && validator.username.invalid" class="alert alert-danger">
+                                            <div *ngIf="validator.username.errors?.required">Login jest wymagany.</div>
+                                            <div *ngIf="validator.username.errors?.minlength">Login powinien zawierać minimum 6 znaków.</div>
+                                        </div>
+                            </div>
                                 <div class="form-group form-floating">
                                     <input type="password" placeholder="Hasło" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="floatingPassword" formControlName="password" required>
                                     <label for="floatingPassword">Hasło</label>
+                                    <div *ngIf="validator.password.touched && validator.password.invalid" class="alert alert-danger">
+                                        <div *ngIf="validator.password.errors?.required">Hasło jest wymagane.</div>
+                                        <div *ngIf="validator.password.errors?.minlength">Hasło powinna zawierać minimum 6 znaków.</div>
+                                    </div>
                                 </div>
                             </div>
                                     <div class="login text-center my-4">

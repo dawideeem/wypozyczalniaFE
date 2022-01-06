@@ -13,7 +13,7 @@ import {UserpanelComponent} from './userpanel/userpanel.component';
 const routes: Routes = [{path: 'home', component: HomeComponent},
                         {path: 'cars', component: CarsComponent},
                         {path: 'kontakt', component: KontaktComponent},
-                        {path: 'form/:id', component: FormComponent},
+                        {path: 'form/:id', component: FormComponent, canActivate: [AuthGuard]},
                         {path: '', component: HomeComponent},
                         {path: 'register', component: RegisterComponent},
                         {path: 'login', component: LoginComponent},

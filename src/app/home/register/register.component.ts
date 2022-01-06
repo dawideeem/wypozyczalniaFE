@@ -1,6 +1,6 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { iif, Observable } from 'rxjs';
 import { AuthenticationService } from '../../services/authentication.service';
@@ -15,12 +15,11 @@ export class RegisterComponent implements OnInit {
   user: any;
   isRegistered = false;
 
-
-  credentials = this.formBuilder.group({
-    username: ['', [Validators.required, Validators.minLength(6)]],
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(6)]],
-    roles: ['ROLE_USER']
+  credentials = new FormGroup({
+    username: new FormControl("",[Validators.required, Validators.minLength(6)]),
+    email: new FormControl("",[Validators.required, Validators.email]),
+    password: new FormControl("",[Validators.required, Validators.minLength(6)]),
+    roles: new FormControl('ROLE_USER')
   })
 
   roles = ['user'];
@@ -53,6 +52,10 @@ export class RegisterComponent implements OnInit {
 
 
   }
+
+  get validator(){
+    return this.credentials.controls;
+  };
 
   onActive() {
     window.scroll(0, 0)
