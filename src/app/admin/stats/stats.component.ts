@@ -14,6 +14,11 @@ export class StatsComponent implements OnInit {
   Rent?: any;
   days: any;
 
+  searchCar!: string;
+  searchCity!: string;
+  searchMinPrice:string="0";
+  searchMaxPrice:string="5000";
+
   ngOnInit(): void {
     this.getRents();
     this.Rent=this.rents

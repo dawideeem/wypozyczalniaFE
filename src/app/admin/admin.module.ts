@@ -13,6 +13,9 @@ import { SearchFiilterPipe } from './msg/pipes/search-fiilter.pipe';
 import { FileUploadComponent } from '../file-upload/file-upload.component';
 import { RentsComponent } from './rents/rents.component';
 import { StatsComponent } from './stats/stats.component';
+import { CarFilterPipe } from './stats/filters/car-filter.pipe';
+import { CityFilterPipe } from './stats/filters/city-filter.pipe';
+import { PriceFilterPipe } from './stats/filters/price-filter.pipe';
 
 
 
@@ -23,9 +26,23 @@ import { StatsComponent } from './stats/stats.component';
     AdminRoutingModule,
     FormsModule,
     ReactiveFormsModule
-
   ],
 
-  declarations: [EditComponent, CreateComponent, ListComponent, UseraddComponent, UserlistComponent, UsereditComponent, MessagesComponent, SearchFiilterPipe,FileUploadComponent, RentsComponent, StatsComponent]
+  declarations: [
+    EditComponent,
+     CreateComponent, 
+     ListComponent, 
+     UseraddComponent, 
+     UserlistComponent, 
+     UsereditComponent, 
+     MessagesComponent, 
+     SearchFiilterPipe,
+     FileUploadComponent, 
+     RentsComponent, 
+     StatsComponent,
+     CarFilterPipe,
+     CityFilterPipe,
+     PriceFilterPipe
+    ]
 })
 export class AdminModule { }
