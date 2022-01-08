@@ -16,6 +16,7 @@ import { StatsComponent } from './stats/stats.component';
 import { CarFilterPipe } from './stats/filters/car-filter.pipe';
 import { CityFilterPipe } from './stats/filters/city-filter.pipe';
 import { PriceFilterPipe } from './stats/filters/price-filter.pipe';
+import { MonthFilterPipe } from './stats/filters/month-filter.pipe';
 
 
 
@@ -42,7 +43,8 @@ import { PriceFilterPipe } from './stats/filters/price-filter.pipe';
      StatsComponent,
      CarFilterPipe,
      CityFilterPipe,
-     PriceFilterPipe
+     PriceFilterPipe,
+     MonthFilterPipe
     ]
 })
 export class AdminModule { }

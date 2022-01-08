@@ -1,35 +1,55 @@
 <h1 class="display-6 text-center">Statystyki</h1>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Filtry</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+        <div class="modal-body" >
 
-  <div class="row input-group mb-3 col-sm-auto">
+          <div class="col-sm-auto my-2">
+            <select class="form-select rounded-pill" id="inputGroupSelect01" [(ngModel)]="searchCar">
+              <option selected>Samochód...</option>
+              <ng-container *ngFor="let rent of rents"><option *ngIf="rent.rented==true">{{rent.carRent}}</option></ng-container>
+            </select>
+          </div>
+            <div class="col-sm-auto my-2">
+            <select class="form-select rounded-pill" id="inputGroupSelect02" [(ngModel)]="searchCity">
+              <option selected>Miasto...</option>
+              <ng-container *ngFor="let rent of rents"><option *ngIf="rent.rented==true">{{rent.cityRent}}</option></ng-container>
+            </select>
+          </div>
+      
+            <div class="col-sm-auto my-2">
+                <label for="customRange1" class="form-label">Cena min: {{searchMinPrice}}</label>
+                <input type="range" class="form-range" min="0" max="5000" step="1"  id="customRange1" [(ngModel)]="searchMinPrice">
+      
+                <label for="customRange2" class="form-label">Cena max: {{searchMaxPrice}}</label>
+                <input type="range" id="customRange2" class="form-range" min="0" max="5000" step="1" [(ngModel)]="searchMaxPrice">
+              </div>
 
-    <div class="col-md-4 col-lg-4 m-2">
-      <select class="form-select rounded-pill" id="inputGroupSelect01" [(ngModel)]="searchCar">
-        <option selected>Samochód...</option>
-        <ng-container *ngFor="let rent of rents"><option *ngIf="rent.rented==true">{{rent.carRent}}</option></ng-container>
-      </select>
-    </div>
-
-      <div class="col-md-4 col-lg-4 m-2">
-      <select class="form-select rounded-pill" id="inputGroupSelect02" [(ngModel)]="searchCity">
-        <option selected>Miasto...</option>
-        <ng-container *ngFor="let rent of rents"><option *ngIf="rent.rented==true">{{rent.cityRent}}</option></ng-container>
-      </select>
-    </div>
-    <div class="col-md-4 col-lg-3">
-
+            <div class="col-sm-auto my-2">
+                <label for="example-date-input" class="col-form-label">Wybierz miesiąc: {{searchMonth}}</label>
+                <input class="form-control rounded-pill" type="month" [(ngModel)]="searchMonth">
+              </div>
         
-          <label for="customRange1" class="form-label">Cena min: {{searchMinPrice}}</label>
-          <input type="range" class="form-range" min="0" max="5000" step="1"  id="customRange1" [(ngModel)]="searchMinPrice">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Ok</button>
 
-        
-        <label for="customRange2" class="form-label">Cena max: {{searchMaxPrice}}</label>
-          <input type="range" id="customRange2" class="form-range" min="0" max="5000" step="1" [(ngModel)]="searchMaxPrice">
-           
+      </div>
+    </div>
   </div>
-    </div>
+</div>
+
+  
 
     <div class="table-responsive">
+      <button type="button" class="btn btn-success float-end me-2 my-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Filtry
+      </button>
     <table class="table text-center">
         <thead>
           <tr>
@@ -42,7 +62,7 @@
 
           </tr>
         </thead>
-        <tbody *ngFor="let rent of rents | carFilter:searchCar | cityFilter:searchCity | priceFilter:searchMinPrice:searchMaxPrice;index as i">
+        <tbody *ngFor="let rent of rents | carFilter:searchCar | cityFilter:searchCity | priceFilter:searchMinPrice:searchMaxPrice | monthFilter:searchMonth;index as i">
             <ng-container *ngIf="rent.rented==true">
           <tr>
             <td>{{i+1}}</td>
