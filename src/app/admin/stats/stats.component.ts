@@ -19,8 +19,8 @@ export class StatsComponent implements OnInit {
 
   searchCar!: string;
   searchCity!: string;
-  searchMinPrice:string="0";
-  searchMaxPrice:string="5000";
+  searchMinPrice:number=1;
+  searchMaxPrice:number=5000;
   searchMonth!: Date;
 
   ngOnInit(): void {

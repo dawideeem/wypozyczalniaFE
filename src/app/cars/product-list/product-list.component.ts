@@ -11,10 +11,11 @@ import { CarService } from 'src/app/admin/cars/list/car.service';
 export class ProductListComponent implements OnInit {
   searchTerm!: any;
   searchCity!: any;
-  searchPrice!: any;
   searchPeople: any;
   searchFuel: any;
   searchKlima: any;
+  searchMinPrice:number=1;
+  searchMaxPrice:number=500;
 
   cars: Car[]=[];
 

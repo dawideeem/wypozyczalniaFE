@@ -20,3 +20,6 @@ form{
 .row{
     margin-left: 0;
 }
+.carousel-caption{
+    text-shadow: -1px -1px 4px rgb(1, 1, 1);
+}

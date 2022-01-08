@@ -11,7 +11,7 @@ export interface Rents{
     postal:string;
     startDate: Date;
     endDate: Date;
-    price: string;
+    price: number;
     cityRent: string;
     carRent: string;
     rented: boolean;

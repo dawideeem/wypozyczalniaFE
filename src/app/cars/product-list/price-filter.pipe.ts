@@ -6,13 +6,13 @@ import { Car } from "src/app/models/car";
 })
 
 export class PriceFilterPipe implements PipeTransform{
-    transform(products: Car[], searchPrice: number): Car[]{
-        if(!products || !searchPrice){
+    transform(products: Car[], searchMinPrice: number, searchMaxPrice: number): Car[]{
+        if(!products || !searchMinPrice || !searchMaxPrice){
             return products;
         }
 
         return products.filter((product) => {
-            return product.price<=searchPrice;
+            return product.price>=searchMinPrice && product.price<=searchMaxPrice;
     })
     
     }}

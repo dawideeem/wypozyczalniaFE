@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ProductItemComponent implements OnInit {
 
-  @Input() productItem: Car | undefined
+  @Input() productItem!: Car;
 
 
   constructor(private router: Router) {

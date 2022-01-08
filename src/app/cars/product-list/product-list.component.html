@@ -1,57 +1,72 @@
     <div class="row m-0 p-0">
         <div class="col m-2">
-            <button class="btn btn-dark float-end" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2"  aria-expanded="false" aria-controls="multiCollapseExample2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
-                <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-            Filtruj
-        </button>
+            <button type="button" class="btn btn-success float-end me-2 my-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+                  <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+              </svg>
+                Filtry
+              </button>
+         </div>
     </div>
-    </div>
+
+
+    <div class="row ms-2 mb-2 m-0">
+        <div class="col-md-4" *ngFor="let car of cars|productFilter: searchTerm|cityFilter: searchCity|priceFilter:searchMinPrice:searchMaxPrice|peopleFilter: searchPeople|fuelFilter: searchFuel|klimaFilter: searchKlima">
+    <app-product-item [productItem]="car"></app-product-item>
+        </div>
+      </div>
     
-<div class="collapse multi-collapse" id="multiCollapseExample2">
-    <div class="row p-0 m-0">
-    <div class="form-group col-md-2">
-        <p class="text-center p-0 m-0">Nazwa:</p>
-        <input type="text" class="form-control" placeholder="Wpisz nazwe" [(ngModel)]="searchTerm"/>
+
+        
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Filtry</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="col-sm-auto my-2">
+        <p class="p-0 m-0">Nazwa:</p>
+        <input type="text" class="form-control rounded-pill" placeholder="Wpisz nazwe" [(ngModel)]="searchTerm"/>
     </div>
-    
-    <div class="form-group col-md-2">
-        <p class="text-center p-0 m-0">Cena/Doba:</p>
-        <input type="number" class="form-control" placeholder="Wybierz cene" [(ngModel)]="searchPrice"/>
-    </div>
-    <div class="form-group col-md-2">
-        <p class="text-center p-0 m-0">Ilosc Miejsc:</p>
-        <select class="form-control" [(ngModel)]="searchPeople">
+    <div class="col-sm-auto my-2">
+        <label for="customRange1" class="form-label">Cena min: {{searchMinPrice}}</label>
+        <input type="range" class="form-range" min="1" max="500" step="1"  id="customRange1" [(ngModel)]="searchMinPrice">
+
+        <label for="customRange2" class="form-label">Cena max: {{searchMaxPrice}}</label>
+        <input type="range" id="customRange2" class="form-range" min="1" max="500" step="1" [(ngModel)]="searchMaxPrice">
+      </div>
+    <div class="col-sm-auto my-2">
+        <p class="p-0 m-0">Ilosc Miejsc:</p>
+        <select class="form-select rounded-pill" [(ngModel)]="searchPeople">
             <option>2</option>
             <option>3</option>
             <option>4</option>
             <option>5</option>
           </select>
     </div>
-    <div class="form-group col-md-2">
-        <p class="text-center p-0 m-0">Paliwo:</p>
-        <select class="form-control" [(ngModel)]="searchFuel">
+    <div class="col-sm-auto my-2">
+        <p class="p-0 m-0">Paliwo:</p>
+        <select class="form-select rounded-pill" [(ngModel)]="searchFuel" aria-label="Default select example">
             <option>Benzyna</option>
             <option>Olej Napędowy</option>
             <option>LPG</option>
           </select>
     </div>
-    <div class="form-group col-md-2">
-        <p class="text-center p-0 m-0">Klimatyzacja:</p>
-        <select class="form-control" [(ngModel)]="searchKlima">
+    <div class="col-sm-auto my-2">
+        <p class="p-0 m-0">Klimatyzacja:</p>
+        <select class="form-select rounded-pill" [(ngModel)]="searchKlima">
             <option>Klimatyzacja</option>
             <option>Brak Klimatyzacji</option>
           </select>
     </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Ok</button>
+
+      </div>
     </div>
+  </div>
 </div>
-
-    <div class="row mt-2 mb-2 m-0">
-        <div class="col-md-4" *ngFor="let car of cars|productFilter: searchTerm|cityFilter: searchCity|priceFilter: searchPrice|peopleFilter: searchPeople|fuelFilter: searchFuel|klimaFilter: searchKlima">
-    <app-product-item [productItem]="car"></app-product-item>
-        </div>
-    </div>
-    
-
-    

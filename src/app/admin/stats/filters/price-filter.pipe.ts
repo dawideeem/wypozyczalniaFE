@@ -6,7 +6,7 @@ import { Rents } from "src/app/models/rents";
 })
 
 export class PriceFilterPipe implements PipeTransform{
-    transform(rents: Rents[], searchMinPrice: string, searchMaxPrice: string): Rents[]{
+    transform(rents: Rents[], searchMinPrice: number, searchMaxPrice: number): Rents[]{
         if(!rents || !searchMinPrice || !searchMaxPrice){
             return rents;
         }
