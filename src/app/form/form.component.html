@@ -96,7 +96,7 @@
       <input class="form-control" type="text" placeholder="{{cars?.city}}" readonly>
       </div>
       <div class="col my-3 text-center">
-       <p class="h6"> Łączna cena:</p><p class="h4"> {{calculateDiff(myCredentials.controls.date1.value,myCredentials.controls.date2.value, cars?.price)}} </p>
+       <p class="h6"> Łączna cena:</p><p class="h4"> {{calculateDiff(myCredentials.controls.date1.value,myCredentials.controls.date2.value, cars?.price) | currency: 'PLN'}} </p>
       </div>
 
       </div>

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { NotifierModule } from 'angular-notifier';
 import { UserpanelRoutingModule } from './userpanel-routing.module';
 import { EditComponent } from './edit/edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -14,7 +14,8 @@ import { UserrentComponent } from './userrent/userrent.component';
     CommonModule,
     UserpanelRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NotifierModule
   ]
 })
 export class UserpanelModule { }

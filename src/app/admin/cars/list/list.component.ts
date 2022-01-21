@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CarService } from './car.service';
 import { Car } from 'src/app/models/car';
+import { NotifierService } from 'angular-notifier';
 
 
 @Component({
@@ -13,10 +14,11 @@ export class ListComponent implements OnInit {
   selectedCarId!: string;
   isEdit = false;
   sendId:any;
-
+  private readonly notifier: NotifierService;
   constructor(
-    private carService: CarService
-  ) { }
+    private carService: CarService,
+    notifierService: NotifierService) {
+      this.notifier = notifierService; }
 
   ngOnInit() {
     this.getCarList();
@@ -28,7 +30,7 @@ export class ListComponent implements OnInit {
       this.cars=res;
     },
     async(err)=>{
-      console.log('Nie udalo sie pobrac listy samochodow')
+      this.notifier.notify('error', 'Nie udalo sie pobrac listy samochodów');
     }
   )
   };

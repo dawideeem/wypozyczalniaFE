@@ -4,6 +4,7 @@ import { MessageService } from './message.service';
 import { Msg } from 'src/app/models/msg';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-message',
@@ -11,6 +12,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./message.component.css']
 })
 export class MessageComponent implements OnInit {
+
+  private readonly notifier: NotifierService;
+
   username:any;
   userData:any;
   msgData: any;
@@ -22,7 +26,9 @@ export class MessageComponent implements OnInit {
     userMessage:new FormControl(null)
   })
 
-  constructor(private messageService:MessageService,private userService: UserService,private router: Router) { }
+  constructor(private messageService:MessageService,private userService: UserService,private router: Router,
+    notifierService: NotifierService) {
+      this.notifier = notifierService; }
 
   ngOnInit(): void {
     this.userData=this.userService.getUserId();
@@ -45,7 +51,7 @@ export class MessageComponent implements OnInit {
 
       },
       (err)=>{
-        console.log('Nie udalo sie pobrac twoich wiadomosci')
+        this.notifier.notify('error', 'Nie udało się pobrać twoich wiadomości.');
       }
     )
   }
@@ -62,11 +68,12 @@ export class MessageComponent implements OnInit {
     };
     this.messageService.updateMsg(msgData,this.id).subscribe((res)=>{
       this.loadMessage();
+      this.notifier.notify('error', 'Wiadomość nie została wysłana, spróbuj ponownie.');
     },(err)=>{this.loadMessage();
-
+      this.notifier.notify('success', 'Wiadomość została wysłana.');
     },
     
     );
-    window.location.reload();
+
   }
 }

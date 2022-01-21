@@ -13,6 +13,6 @@ export interface Car{
 }
 
 export interface CarImage {
-    title: string;
-    image: string;
+    name: string;
+    url: string;
   }

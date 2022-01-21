@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 import { CarEditService } from './car-edit.service'
 
 @Component({
@@ -12,6 +13,8 @@ export class EditComponent implements OnInit {
 
   @Input() data: any;
 
+  private readonly notifier: NotifierService;
+
   Cities=['Kraków','Warszawa','Poznań','Kielce','Wrocław','Łódź'];
  
   private id: string = '';
@@ -20,7 +23,8 @@ export class EditComponent implements OnInit {
   constructor(
     private carEditService: CarEditService,
     private router: Router,
-  ) { }
+    notifierService: NotifierService) {
+      this.notifier = notifierService; }
 
   credentials = new FormGroup({
     name: new FormControl(null,[Validators.required, Validators.minLength(3)]),
@@ -42,7 +46,6 @@ export class EditComponent implements OnInit {
         this.credentials.patchValue(this.cars);
       },
       async(err)=>{
-        console.log('Nie udalo sie pobrac samochodu')
       }
     ) 
   }
@@ -60,11 +63,14 @@ export class EditComponent implements OnInit {
       imageUrl: this.credentials.controls.imageUrl.value
     };
     this.carEditService.editCar(carData, this.id).subscribe((res) => {
-
-    }, (err) => {
-
+      this.notifier.notify('success', 'Edycja przebiegła pomyślnie');
+      
+    }, async(err) => {
+      this.notifier.notify('success', 'Edycja przebiegła pomyślnie');
+    },
+    ()=>{
+      this.notifier.notify('success', 'Edycja przebiegła pomyślnie');
     });
-    this.router.navigate(['admin/list'])
 
   }
 

@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { forkJoin, Observable } from 'rxjs';
 import { FileUploadService } from 'src/app/file-upload/file-upload.service';
 import { catchError, switchMap, tap } from 'rxjs/operators';
+import { MessangerService } from '../services/messanger.service';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-file-upload',
@@ -11,18 +13,20 @@ import { catchError, switchMap, tap } from 'rxjs/operators';
 })
 export class FileUploadComponent implements OnInit {
 
+  private readonly notifier: NotifierService;
+
   selectedFiles?: FileList;
   progressInfos: any[] = [];
   message: string[] = [];
 
   fileInfos?: Observable<any>;
 
-  constructor(private uploadService: FileUploadService) {
-    this.fileInfos = this.uploadService.getFiles();
-  }
+  constructor(private uploadService: FileUploadService, private messangerService: MessangerService,
+    notifierService: NotifierService) {
+      this.notifier = notifierService; }
 
   ngOnInit() {
-    this.fileInfos = this.uploadService.getFiles();
+
   }
 
   selectFiles(event: any): void {
@@ -50,16 +54,18 @@ export class FileUploadComponent implements OnInit {
           if (event.type === HttpEventType.UploadProgress) {
             this.progressInfos[idx].value = Math.round(100 * event.loaded / event.total);
           } else if (event instanceof HttpResponse) {
-            const msg = 'Uploaded the file successfully: ' + file.name;
-            this.message.push(msg);
+            const msg = 'Dodawanie zdjęcia zakończone pomyślnie: ' + file.name;
+            this.notifier.notify('success', 'Dodawanie zdjęcia zakończone pomyślnie');
             this.fileInfos = this.uploadService.getFiles();
+            this.messangerService.getFile(file.name);
+            this.message.push(msg);
           }
         },
         (err: any) => {
           this.progressInfos[idx].value = 0;
-          const msg = 'Could not upload the file: ' + file.name;
+          const msg = 'Dodawanie zdjęcia zakończone niepomyślnie: ' + file.name;
+          this.notifier.notify('error', 'Dodawanie zdjęcia zakończone niepomyślnie');
           this.message.push(msg);
-          this.fileInfos = this.uploadService.getFiles();
         });
     }
   }

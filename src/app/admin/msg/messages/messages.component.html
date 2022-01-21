@@ -35,14 +35,14 @@
           <div *ngFor="let message of UserMessage;index as i">
 
             <div class="text-start">
-              <div class="text-start bg-secondary border-secondary rounded-pill px-3 py-2 m-2"><p class="h6">{{username}}:</p>
+              <div class="text-start bg-secondary border-secondary rounded-pill px-5 py-2 m-2"><p class="h6">{{username}}:</p>
                 {{UserMessage[i]}}
               </div>
             </div>
           
             
             <div class="text-end">
-            <div *ngIf="AdminMessage[i]?.length>0" class="text-end end-0 bg-success border-success rounded-pill px-3 py-2 m-2"><p class="h6">Administrator:</p>
+            <div *ngIf="AdminMessage[i]?.length>0" class="text-end end-0 bg-success border-success rounded-pill px-5 py-2 m-2"><p class="h6">Administrator:</p>
                {{AdminMessage[i]}}
             </div>
           </div>

@@ -1,5 +1,5 @@
 import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable} from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { CarImage } from 'src/app/models/car';
@@ -8,6 +8,8 @@ import { CarImage } from 'src/app/models/car';
   providedIn: 'root'
 })
 export class FileUploadService {
+
+
   private baseUrl = `${environment.baserUrl}${environment.port}/api`;
 
   constructor(private http: HttpClient) {}
@@ -15,12 +17,12 @@ export class FileUploadService {
   upload(file: File): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
 
-    formData.append('title', 'title');
-    formData.append('image', file);
+
+    formData.append('file', file);
 
     const req = new HttpRequest(
       'POST',
-      `${this.baseUrl}/photos/add`,
+      `${this.baseUrl}/file/upload`,
       formData,
       {
         reportProgress: true,
@@ -32,6 +34,6 @@ export class FileUploadService {
   }
 
   getFiles(): Observable<CarImage[]> {
-    return this.http.get<CarImage[]>(`${this.baseUrl}/`);
+    return this.http.get<CarImage[]>(`${this.baseUrl}/file/files`);
   }
 }

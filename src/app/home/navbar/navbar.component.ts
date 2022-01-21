@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NotifierService } from 'angular-notifier';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { IUser } from 'src/app/User/I-user';
 import { UserService } from 'src/app/User/user.service';
@@ -10,12 +11,15 @@ import { UserService } from 'src/app/User/user.service';
 })
 export class NavbarComponent implements OnInit {
 
+  private readonly notifier: NotifierService;
   isEnable: boolean = false;
   isLoggedUser: any;
   userData!: IUser;
 
   constructor( private authService: AuthenticationService,
-    private userService: UserService) { }
+    private userService: UserService, 
+    notifierService: NotifierService) {
+      this.notifier = notifierService; }
 
   ngOnInit(): void {
     this.authService.isAuthenticated.subscribe((res) => {
@@ -37,6 +41,7 @@ export class NavbarComponent implements OnInit {
 
   logOut() {
     this.authService.logout();
-    this.authService.isAdmin.next(false)
+    this.authService.isAdmin.next(false);
+    this.notifier.notify('default', 'Wylogowano');
   }
 }

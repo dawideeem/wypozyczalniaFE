@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthAdminGuard implements CanActivate {
-
-  constructor(private router: Router) { }
+  private readonly notifier: NotifierService;
+  constructor(private router: Router, notifierService: NotifierService) {
+    this.notifier = notifierService; }
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -17,10 +19,8 @@ export class AuthAdminGuard implements CanActivate {
       return true;
     } else {
       this.router.navigate([''])
-      console.log('nie jestes adminem')
-
+      this.notifier.notify('error', 'Nie posiadasz dostępu do tej zakładki');
       return false;
     }
   }
-
 }

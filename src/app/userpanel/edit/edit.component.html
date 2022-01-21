@@ -4,45 +4,80 @@
         <div class="form-floating col mx-2">
             <input type="text" placeholder="Imie" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="firstname" formControlName="firstname" required>
             <label for="firstname">Imie</label>
+            <div *ngIf="validator.firstname.touched && validator.firstname.invalid" class="alert alert-danger">
+                <div *ngIf="validator.firstname.errors?.required">Imie jest wymagane.</div>
+                <div *ngIf="validator.firstname.errors?.minlength">Imie powinno zawierać minimum 3 znaki.</div>
+            </div>
         </div> 
         <div class="form-floating col mx-2">
             <input type="text" placeholder="Nazwisko" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="lastname" formControlName="lastname" required>
             <label for="lastname">Nazwisko</label>
+            <div *ngIf="validator.lastname.touched && validator.lastname.invalid" class="alert alert-danger">
+                <div *ngIf="validator.lastname.errors?.required">Nazwisko jest wymagane.</div>
+                <div *ngIf="validator.lastname.errors?.minlength">Nazwisko powinno zawierać minimum 3 znaki.</div>
+            </div>
         </div>
     </div>
     <div class="row">
         <div class="form-floating col mx-2">
             <input type="text" placeholder="Telefon" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="phone" formControlName="phone" required>
             <label for="phone">Telefon</label>
+            <div *ngIf="validator.phone.touched && validator.phone.invalid" class="alert alert-danger">
+                <div *ngIf="validator.phone.errors?.required">Numer telefonu jest wymagany.</div>
+                <div *ngIf="validator.phone.errors?.minlength">Numer telefonu powinnien zawierać minimum 9 cyfr.</div>
+            </div>
             </div> 
             <div class="form-floating col mx-2">
                 <input type="text" placeholder="email" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="email" formControlName="email" required>
                 <label for="email">Email</label>
+                <div *ngIf="validator.email.touched && validator.email.invalid" class="alert alert-danger">
+                    <div *ngIf="validator.email.errors?.required">Email jest wymagane.</div>
+                    <div *ngIf="validator.email.errors?.email">Email jest nieprawidłowy.</div>
+                </div>
                 </div> 
         </div>
         <div class="row">
         <div class="col mx-2 form-floating">
             <input type="text" placeholder="Miasto" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="city" formControlName="city" required>
             <label for="city">Miasto</label>
+            <div *ngIf="validator.city.touched && validator.city.invalid" class="alert alert-danger">
+                <div *ngIf="validator.city.errors?.required">Miasto jest wymagane.</div>
+                <div *ngIf="validator.city.errors?.minlength">Miasto powinno zawierać minimum 3 znaki.</div>
+            </div>
             </div>
             <div class="col mx-2 form-floating">
                 <input type="text" placeholder="Kod" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="postal" formControlName="postal" required>
                 <label for="postal">Kod Pocztowy</label>
+                <div *ngIf="validator.postal.touched && validator.postal.invalid" class="alert alert-danger">
+                    <div *ngIf="validator.postal.errors?.required">Kod Pocztowy jest wymagany.</div>
+                    <div *ngIf="validator.postal.errors?.minlength">Kod Pocztowy powinnien zawierać minimum 5 cyfr.</div>
+                </div>
                 </div>
         </div>
         <div class="row">
             <div class="col mx-2 form-floating">
                 <input type="text" placeholder="Ulica" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="street" formControlName="street" required>
                 <label for="street">Ulica</label>
+                <div *ngIf="validator.street.touched && validator.street.invalid" class="alert alert-danger">
+                    <div *ngIf="validator.street.errors?.required">Ulica jest wymagana.</div>
+                    <div *ngIf="validator.street.errors?.minlength">Ulica powinna zawierać minimum 3 znaki.</div>
+                </div>
                 </div>
             <div class="col mx-2 form-floating">
                     <input type="text" placeholder="Numerbud" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="build" formControlName="build" required>
                     <label for="build">Numer domu</label>
+                    <div *ngIf="validator.build.touched && validator.build.invalid" class="alert alert-danger">
+                        <div *ngIf="validator.build.errors?.required">Numer domu jest wymagany.</div>
+                        <div *ngIf="validator.build.errors?.minlength">Numer domu powinnien zawierać minimum 1 cyfr.</div>
+                    </div>
                     </div>
                 </div>
                     <div class="form-group mx-2 form-floating">
-                        <input type="text" placeholder="Urodziny" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="birth" formControlName="birth" required>
+                        <input type="date" placeholder="Urodziny" class="form-control my-3 border-top-0 border-end-0 border-start-0" id="birth" formControlName="birth" required>
                         <label for="birth">Data urodzenia</label>
+                        <div *ngIf="validator.birth.touched && validator.birth.invalid" class="alert alert-danger">
+                            <div *ngIf="validator.birth.errors?.required">Data urodzenia jest wymagana.</div>
+                        </div>
                         </div>
                         
                         <button type="submit" [disabled]="!myCredentials.valid" class="btn btn-success my-3">Edytuj Dane</button>

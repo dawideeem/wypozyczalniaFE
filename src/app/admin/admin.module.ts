@@ -17,6 +17,7 @@ import { CarFilterPipe } from './stats/filters/car-filter.pipe';
 import { CityFilterPipe } from './stats/filters/city-filter.pipe';
 import { PriceFilterPipe } from './stats/filters/price-filter.pipe';
 import { MonthFilterPipe } from './stats/filters/month-filter.pipe';
+import { NotifierModule } from 'angular-notifier';
 
 
 
@@ -26,7 +27,8 @@ import { MonthFilterPipe } from './stats/filters/month-filter.pipe';
     CommonModule,
     AdminRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NotifierModule
   ],
 
   declarations: [

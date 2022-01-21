@@ -9,6 +9,8 @@ export class MessangerService {
   filterData: any;
   subject = new Subject()
 
+  fileName!: string;
+
   constructor() { }
 
   sendMsg(product: any){
@@ -30,5 +32,12 @@ export class MessangerService {
   }
   getId(){
     return this.idsend;
+  }
+
+  getFile(fileName: string){
+    this.fileName=fileName;
+  }
+  sendFile(){
+    return this.fileName;
   }
 }

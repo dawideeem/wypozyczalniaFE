@@ -12,14 +12,14 @@
 
     <div class="row ms-2 mb-2 m-0">
         <div class="col-md-4" *ngFor="let car of cars|productFilter: searchTerm|cityFilter: searchCity|priceFilter:searchMinPrice:searchMaxPrice|peopleFilter: searchPeople|fuelFilter: searchFuel|klimaFilter: searchKlima">
-    <app-product-item [productItem]="car"></app-product-item>
+          <app-product-item [productItem]="car"></app-product-item>
         </div>
       </div>
     
 
         
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog ">
         <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Filtry</h5>

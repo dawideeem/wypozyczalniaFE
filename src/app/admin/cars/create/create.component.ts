@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MessangerService } from 'src/app/services/messanger.service';
 import { CarAddService } from './car-add.service';
-
+import { NotifierService } from 'angular-notifier';
 
 
 @Component({
@@ -12,7 +13,10 @@ import { CarAddService } from './car-add.service';
 })
 export class CreateComponent implements OnInit {
 
+  private readonly notifier: NotifierService;
+
   Cities=['Kraków','Warszawa','Poznań','Kielce','Wrocław','Łódź'];
+  fileName!: string;
 
   credentials = this.formBuilder.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
@@ -29,13 +33,16 @@ export class CreateComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private carAddService: CarAddService, 
-    private router: Router
-     ) { }
+    private router: Router,
+    private messangerService: MessangerService,
+    notifierService: NotifierService) {
+      this.notifier = notifierService; }
 
   ngOnInit(): void {
 
   }
   createCar() {
+    this.fileName=this.messangerService.sendFile();
     const carData = {
       name: this.credentials.controls.name.value,
       city: this.credentials.controls.city.value,
@@ -45,15 +52,14 @@ export class CreateComponent implements OnInit {
       people: this.credentials.controls.people.value,
       condition: this.credentials.controls.condition.value,
       price: this.credentials.controls.price.value,
-      imageUrl: this.credentials.controls.imageUrl.value
+      imageUrl: "http://localhost:8080/api/file/files/"+this.fileName,
     };
     this.carAddService.addCar(carData).subscribe((res) => {
-
+      this.notifier.notify('error', 'Nie udalo się dodać samochodów');
     }, (err) => {
-
+      this.notifier.notify('success', 'Samochód został dodany');
     });
 
-    this.router.navigate(['admin/list'])
 
 
   }

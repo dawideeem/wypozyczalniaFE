@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { NotifierService } from 'angular-notifier';
 import { filter } from 'rxjs/operators';
 import { Msg } from 'src/app/models/msg';
 import { MsgService } from './messages.service';
@@ -10,6 +11,9 @@ import { MsgService } from './messages.service';
   styleUrls: ['./messages.component.css']
 })
 export class MessagesComponent implements OnInit {
+
+  private readonly notifier: NotifierService;
+
   ownerId : any;
   UserMessage : any;
   AdminMessage : any;
@@ -23,7 +27,8 @@ export class MessagesComponent implements OnInit {
   })
 
 
-  constructor(private msgService: MsgService) { }
+  constructor(private msgService: MsgService,notifierService: NotifierService) {
+    this.notifier = notifierService; }
 
   ngOnInit(): void {
   this.getMsgList();
@@ -37,7 +42,7 @@ export class MessagesComponent implements OnInit {
         this.filter();
       },
       (err)=>{
-        console.log('Nie udalo sie pobrac listy wiadomosci');
+        this.notifier.notify('error', 'Nie udało się pobrać twoich wiadomości.');
       }
     )
     
@@ -72,12 +77,15 @@ export class MessagesComponent implements OnInit {
       option: true
     };
     this.msgService.updateMsg(msgData,this.id).subscribe((res)=>{
-      this.getMsgList()
-    },(err)=>{this.getMsgList()
+      this.getMsgList();
+      this.notifier.notify('error', 'Wiadomość nie została wysłana, spróbuj ponownie.');
+
+    },(err)=>{this.getMsgList();
+      this.notifier.notify('success', 'Wiadomość została wysłana.');
+
 
     }
     );
-    window.location.reload();
   }
   filter(){
     this.msg.forEach((item)=>{

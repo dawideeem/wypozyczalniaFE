@@ -24,6 +24,7 @@ import { UserpanelComponent } from './userpanel/userpanel.component';
 import { FooterComponent } from './home/footer/footer.component';
 import { NavbarComponent } from './home/navbar/navbar.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
+import { NotifierModule } from 'angular-notifier';
 
 
 
@@ -56,7 +57,8 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    NotifierModule
   ],
   providers: [],
   bootstrap: [AppComponent]

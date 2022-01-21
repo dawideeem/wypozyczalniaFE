@@ -5,6 +5,7 @@ import { UserService } from 'src/app/User/user.service';
 import { UserEditService } from '../userpanel/edit/user-edit.service';
 import { ActivatedRoute } from '@angular/router';
 import  {RentAddService } from './form-service'
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-form',
@@ -12,6 +13,9 @@ import  {RentAddService } from './form-service'
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
+
+  private readonly notifier: NotifierService;
+
 id:any;
 cars: any;
 userId:any;
@@ -21,7 +25,8 @@ days:any;
 rentPrice:any;
 
 
-  constructor(private rentAddService:RentAddService,private route: ActivatedRoute,private userEditService: UserEditService,private userService: UserService,private carEditService: CarEditService) { }
+  constructor(private rentAddService:RentAddService,private route: ActivatedRoute,private userEditService: UserEditService,private userService: UserService,private carEditService: CarEditService, notifierService: NotifierService) {
+    this.notifier = notifierService; }
 
   myCredentials = new FormGroup({
     firstname: new FormControl(null,[Validators.required, Validators.minLength(3)]),
@@ -51,7 +56,7 @@ rentPrice:any;
         console.log(this.cars.name)
       },
       async(err)=>{
-        console.log('Nie udalo sie pobrac samochodow')
+        this.notifier.notify('error', 'Nie udało się pobrać danych samochodu');
       }
     )
   }
@@ -63,7 +68,7 @@ rentPrice:any;
         this.myCredentials.patchValue(this.users);
       },
       (err)=>{
-        console.log('Nie udalo sie pobrac danych uzytkownika')
+        this.notifier.notify('error', 'Nie udało się pobrać danych użytkownika');
       }
     );
   }
@@ -96,9 +101,10 @@ rentPrice:any;
       ownerID: this.userId
     }
     this.rentAddService.addRent(rentData).subscribe((res) => {
-
+      this.notifier.notify('error', 'Coś poszło nie tak, spróbuj ponownie');
     }, (err) => {
-
+     
+      this.notifier.notify('success', 'Wynajmowanie samochodu zakończone sukcesem.');
     });
 
   }

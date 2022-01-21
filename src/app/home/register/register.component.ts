@@ -2,6 +2,7 @@ import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 import { iif, Observable } from 'rxjs';
 import { AuthenticationService } from '../../services/authentication.service';
 
@@ -11,6 +12,8 @@ import { AuthenticationService } from '../../services/authentication.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
+  private readonly notifier: NotifierService;
 
   user: any;
   isRegistered = false;
@@ -24,7 +27,8 @@ export class RegisterComponent implements OnInit {
 
   roles = ['user'];
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthenticationService) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthenticationService, notifierService: NotifierService) {
+    this.notifier = notifierService;
 
   }
 
@@ -41,12 +45,14 @@ export class RegisterComponent implements OnInit {
     };
     this.authService.register(registerData).subscribe(
       async () => {
-        this.router.navigate(['login'])
+        this.notifier.notify('success', 'Rejestracja przebiegła pomyślnie, możesz się zalogować.');
+        this.router.navigate(['login']);
         setTimeout(() => {
           this.onActive()
         })
       },
       async (res) => {
+        this.notifier.notify('error', 'Rejestracja niepowiodła się, spróbuj ponownie później.');
       }
     );
 

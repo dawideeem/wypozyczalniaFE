@@ -67,15 +67,12 @@
         <label>Cena</label>
         <input type="text" formControlName="price" class="form-control col-md-12" required>
     </div>
-    <div class="form-group">
-        <label>Link do zdjęcia</label>
-        <input type="text" formControlName="imageUrl" class="form-control col-md-12" required>
-    </div>
-
+    <div class="form-group m-2">
     <app-file-upload></app-file-upload>
+</div>
     <div class="modal-footer justify-content-center">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Wróć</button>
-        <button class="btn btn-success m-3" 
+        <button class="btn btn-success m-3"
             (click)="createCar()">
             Dodaj Samochód
         </button>
@@ -85,3 +82,5 @@
 </form>
 </div>        </div></div>
 </div>
+
+<notifier-container></notifier-container>
