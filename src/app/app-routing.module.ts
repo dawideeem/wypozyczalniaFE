@@ -8,7 +8,6 @@ import { RegisterComponent } from './home/register/register.component';
 import { LoginComponent } from './home/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthAdminGuard } from './guards/auth-admin.guard';
-import {UserpanelComponent} from './userpanel/userpanel.component';
 
 const routes: Routes = [{path: 'home', component: HomeComponent},
                         {path: 'cars', component: CarsComponent},
